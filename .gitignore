@@ -1,5 +1,8 @@
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
+# Ignore JavaDoc output
+javadoc
+
 # For compiled Java Files
 *.class
 

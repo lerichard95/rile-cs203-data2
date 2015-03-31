@@ -18,19 +18,35 @@ Your bags should be polymorphic, i.e. use generics to allow any kind of contents
 ===
 
 #Tasks:
-[ ] Finish implementing equal() from data1
+[x] Finish implementing equal() from data1
 [ ] Clean up code— add generics
+[ ] Write API (interface) for FiniteBag
+[ ] 
 
 #Research/planning
-[ ] Learn what a multiset is
+[x] Learn what a multiset is
 [ ] List properties of multisets
+
 [ ] How to create a hashmap
 [ ] Use Java generics examples
-[ ] Read about JavaDoc syntax for manual
+[x] Read about JavaDoc syntax for manual
+
+###Tester Library
+http://www.ccs.neu.edu/javalib/Tester/
+
+###CS Bags (specific)
+http://algs4.cs.princeton.edu/13stacks/
+
+###Bags (math):
+http://en.wikipedia.org/wiki/Multiset
+
+###CS Bags:
+http://en.wikipedia.org/wiki/Set_(abstract_data_type)#Multiset
 
 #Planning the API
 [ ] Devise Abstraction strategy- what should be an interface?
   - What operations should be done on the finite bag?
+  - Can items be removed from finite bags?
 [ ]
 [ ]
 [ ]
