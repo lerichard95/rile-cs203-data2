@@ -1,11 +1,11 @@
 //Sorta like leaf— an "empty type??" that is only at the bottom of the BST
-public class Leaf implements BST {
+public class Leaf implements FiniteSet {
 
 	Leaf() {}
 
 	//---FUNCTION CONTRACT-----------------------------------------------------
-	// empty() -> FiniteSet
-	// empty() should return a FiniteSet with "empty" for left, right
+	// empty() -> BST
+	// empty() should return a BST with "empty" for left, right
 	public Leaf empty() {
 	//Note on constructor: It seems OK to use Leaf() for left/right because 
 	//Leaf implements BST
@@ -33,52 +33,52 @@ public class Leaf implements BST {
 		return false;
 	}
 	
-	public FiniteSet add(int elt) {
-		//Return a new FiniteSet with empty left/rights
+	public BST add(int elt) {
+		//Return a new BST with empty left/rights
 		//with the added key elt
-		return new FiniteSet(new Leaf(), elt ,new Leaf());
+		return new BST(new Leaf(), elt ,new Leaf());
 	}
 	
 	/*
 	* t.equal(u) -> boolean
-	* t: FiniteSet
-	* u: FiniteSet
+	* t: BST
+	* u: BST
 	* DESCRIPTION
 	* Returns true if t and u contains the same elements
 	* 
 	*/
-	public boolean equal(FiniteSet u) {
+	public boolean equal(BST u) {
 		//since all Leafs are empty, if u is empty also, then they are equal 
 		return (u.isEmptyHuh());
 	}
 	
 	// What do you remove from a Leaf? Just return Leaf because you can't 
 	// remove elements from empty set
-	public BST remove(int elt) {
+	public FiniteSet remove(int elt) {
 		return new Leaf();
 	}
 	
 	//Thanks to Atticus K for this
 	//And Nicholas B for explaining how this works
-	public BST union(BST u) {
+	public FiniteSet union(FiniteSet u) {
 		return u;
 	}
 	
-	public BST inter(BST u) {
+	public FiniteSet inter(FiniteSet u) {
 		return new Leaf();
 	}
 	
-	public BST diff(BST u) {
+	public FiniteSet diff(FiniteSet u) {
 		return u;
 	}
 	
-	public boolean subset(BST u) {
+	public boolean subset(FiniteSet u) {
 		//  leaf.subset(u) means is leaf a subset of u
 		//The empty set is a subset of any set so return true
 		return true;
 	}
 	
-	public boolean equal(BST u) {
+	public boolean equal(FiniteSet u) {
 		//if u is empty, then it is equal to the empty set
 		return u.isEmptyHuh();
 	}

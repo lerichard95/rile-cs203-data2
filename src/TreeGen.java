@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class TreeGen {
-	BST tree;
+	FiniteSet tree;
 	Random rand = new Random();
 
 	public TreeGen() {
@@ -9,7 +9,7 @@ public class TreeGen {
 
 	//  Thanks to Nicholas Burka for acknowedging the importance of setting
 	//  tree to accomodate for lack of mutation
-	public BST randTree(int num, int range) {
+	public FiniteSet randTree(int num, int range) {
 		tree = new Leaf();
 
 		for (int i = 0; i <= num; i++) {
@@ -19,7 +19,7 @@ public class TreeGen {
 		return tree;
 	}
 
-	public BST exhaustTree(int start, int end) {
+	public FiniteSet exhaustTree(int start, int end) {
 		tree = new Leaf();
 
 		for (int i = start; i <= end; i++) {
