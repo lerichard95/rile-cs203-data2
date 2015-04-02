@@ -1,9 +1,8 @@
+/*
 import java.util.Random;
 
 public class TreeGen {
-	FiniteSet tree;
-	Random rand = new Random();
-
+	FiniteBag<T> tree;
 	public TreeGen() {
 	}
 
@@ -13,7 +12,7 @@ public class TreeGen {
 		tree = new Leaf();
 
 		for (int i = 0; i <= num; i++) {
-			int randKey = 1 + rand.nextInt(range);
+			T randKey = 1 + Data2.rand.nextInt(range);
 			tree = tree.add(randKey);
 		}
 		return tree;
@@ -29,3 +28,4 @@ public class TreeGen {
 	}
 
 }
+*/

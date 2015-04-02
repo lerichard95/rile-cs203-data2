@@ -4,7 +4,7 @@
 #Prompt:
 Your bags should be polymorphic, i.e. use generics to allow any kind of contents. By "pure", we mean that operations on the set return new sets and do not modify the old set.
 
-#Requirements
+###Requirements
 - Finite bags/multiset
   - each element can occur many times
 - Polymorphic (use generics)
@@ -18,18 +18,58 @@ Your bags should be polymorphic, i.e. use generics to allow any kind of contents
 ===
 
 #Tasks:
-[x] Finish implementing equal() from data1
-[ ] Clean up code— add generics
-[ ] Write API (interface) for FiniteBag
+###Legend
+[~] in progress
+[x] completed
+[ ] to do
 [ ] 
+
+===
+
+
+[x] Finish implementing equal() from data1
+
+[x] Rewrite/refactor FiniteSets to FiniteBag, write JavaDoc for functions
+[~] Write API (interface) for FiniteBag
+
+##Concrete Implementations
+[x] Refactor/rewrite Leaf
+[x] Add generics to Leaf
+[x] Make generics comparable for Leaf
+
+[x] Rewrite/refactor Tree, write JavaDoc for functions
+[x] Rebuild constructor for Tree to accomodate int count
+[x] Add generics to Tree
+[~] Make generics comparable for Tree
+	- issue: Use comparable methods in the generics for implementing an AVL tree...
+
+[ ] 
+
+PROCESS:
+1. Write JavaDoc for functions
+2. Write tests for function
+3. Write implementations
+
+##Testing
+[ ] Retool the random tree generation to work with generics...
+[ ] Rewrite tests to work with generics/AVL trees...
+
+##Writing implementations
+[ ] Comment out unused functions
+
+===
 
 #Research/planning
 [x] Learn what a multiset is
 [ ] List properties of multisets
 
 [ ] How to create a hashmap
-[ ] Use Java generics examples
+[x] Use Java generics examples
 [x] Read about JavaDoc syntax for manual
+
+###JavaDoc research
+Cheatsheet for JavaDoc:
+http://www.liferay.com/community/wiki/-/wiki/Main/Javadoc+Guidelines#section-Javadoc+Guidelines-Constructor:+with+parameters
 
 ###Tester Library
 http://www.ccs.neu.edu/javalib/Tester/
@@ -44,13 +84,12 @@ http://en.wikipedia.org/wiki/Multiset
 http://en.wikipedia.org/wiki/Set_(abstract_data_type)#Multiset
 
 #Planning the API
-[ ] Devise Abstraction strategy- what should be an interface?
+===
+[x] Devise Abstraction strategy- what should be an interface?
   - What operations should be done on the finite bag?
   - Can items be removed from finite bags?
 [ ]
-[ ]
-[ ]
-[ ]
+[ ] 
 
 
 #Submission

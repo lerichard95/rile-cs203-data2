@@ -7,7 +7,7 @@ import java.util.Collection;
  *
  * @param <T> The generic datatype that the FiniteBag will hold.
  */
-public interface FiniteBag<T extends Comparable<T>> extends Iterable<T>  {
+public interface FiniteBag<T extends Comparable<T>> {
 
     /**
      * @param item The generic item to be placed into the FiniteBag
@@ -28,20 +28,17 @@ public interface FiniteBag<T extends Comparable<T>> extends Iterable<T>  {
     public boolean member(T item);
 
     /**
-     *
      * @param item The generic item to calculate multiplicity of
      * @return An int representing the multiplicity of the element
      */
     public int multiplicity(T item);
 
     /**
-     *
      * @return A boolean if the FiniteBag is empty
      */
-    public boolean isEmpty();
+    public boolean isEmptyHuh();
 
     /**
-     *
      * @return An int representing the cardinality of the FiniteBag
      */
     public int size();
@@ -51,8 +48,11 @@ public interface FiniteBag<T extends Comparable<T>> extends Iterable<T>  {
 
     public FiniteBag<T> inter(FiniteBag<T> b);
 
-    public FiniteBag<T> sum(FiniteBag<T> b);
+    //TODO: Don't do sum— multiset sum will be done in place of union.
+//    public FiniteBag<T> sum(FiniteBag<T> b);
 
     public FiniteBag<T> diff(FiniteBag<T> b);
+
+
 }
 

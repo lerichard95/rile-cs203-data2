@@ -1,3 +1,4 @@
+/*
 import java.util.Random;
 
 public class A1 {
@@ -8,15 +9,15 @@ public class A1 {
 
 		if (testsEnabled) {
 
-			// A BST for testing
+			// A Tree for testing
 			FiniteSet leaf = new Leaf();
-			FiniteSet t1 = new BST(leaf, 1, leaf);
-			FiniteSet t3 = new BST(leaf, 3, leaf);
-			FiniteSet t5 = new BST(leaf, 5, leaf);
-			FiniteSet t7 = new BST(leaf, 7, leaf);
-			FiniteSet t2 = new BST(t1, 2, t3);
-			FiniteSet t6 = new BST(t5, 6, t7);
-			FiniteSet t4 = new BST(t2, 4, t6);
+			FiniteSet t1 = new Tree(leaf, 1, leaf);
+			FiniteSet t3 = new Tree(leaf, 3, leaf);
+			FiniteSet t5 = new Tree(leaf, 5, leaf);
+			FiniteSet t7 = new Tree(leaf, 7, leaf);
+			FiniteSet t2 = new Tree(t1, 2, t3);
+			FiniteSet t6 = new Tree(t5, 6, t7);
+			FiniteSet t4 = new Tree(t2, 4, t6);
 
 			// Test: empty()
 			System.out.println(leaf.empty());
@@ -88,7 +89,7 @@ public class A1 {
 			// Testing add()
 			System.out.println("-----------  Testing add()  -----------");
 
-			// Adding existing elements to BST
+			// Adding existing elements to Tree
 			// All of these should be identical
 			System.out
 					.println("-------  Testing add() existing elements -------");
@@ -104,7 +105,7 @@ public class A1 {
 					.println("-----  End testing add() existing elements -----");
 
 			// Test: Implementation is pure
-			// Second prints should not return a BST with the element
+			// Second prints should not return a Tree with the element
 			// added in line above...
 
 			// Adding 0 and 8
@@ -125,7 +126,7 @@ public class A1 {
 			System.out
 					.println("----- TEST: remove (1); "
 							+ "remove test 1: make an exhaustive tree and remove all -----");
-			System.out.println("Should print BST representing 1-10");
+			System.out.println("Should print Tree representing 1-10");
 			TreeGen treeGen = new TreeGen();
 			FiniteSet exhaustTree = treeGen.exhaustTree(1, 10);
 
@@ -165,7 +166,7 @@ public class A1 {
 			// Union of overlapping elements should not contain duplicates
 			// because FiniteSets don't have duplicates?
 			System.out.println("----- TEST: union (2); 2 identical sets -----");
-			System.out.println("Should print BST representing 1-10");
+			System.out.println("Should print Tree representing 1-10");
 			FiniteSet exhaustTree3 = treeGen.exhaustTree(1, 10);
 			FiniteSet exhaustTree33 = treeGen.exhaustTree(1, 10);
 			System.out.println(exhaustTree3.union(exhaustTree33));
@@ -177,7 +178,7 @@ public class A1 {
 
 			System.out
 					.println("----- TEST: union (4); 2 non-identical sets -----");
-			System.out.println("Should print BST representing 1-15");
+			System.out.println("Should print Tree representing 1-15");
 			FiniteSet exhaustTree4 = treeGen.exhaustTree(1, 10);
 			FiniteSet exhaustTree44 = treeGen.exhaustTree(11, 15);
 			System.out.println(exhaustTree4.union(exhaustTree44));
@@ -185,7 +186,7 @@ public class A1 {
 			System.out
 					.println("----- TEST: inter (1); set 1-10 with 5-10  -----");
 			FiniteSet exhaustTree5 = treeGen.exhaustTree(5, 10);
-			System.out.println("Should print BST representing 5-10");
+			System.out.println("Should print Tree representing 5-10");
 			System.out.println(exhaustTree4.inter(exhaustTree5));
 
 			System.out
@@ -199,7 +200,7 @@ public class A1 {
 
 			System.out
 					.println("----- TEST: inter (3); total overlap of FiniteSets -----");
-			System.out.println("Should print either BST");
+			System.out.println("Should print either Tree");
 			System.out.println(exhaustTree3.inter(exhaustTree33));
 
 			System.out.println("----- TEST: inter (3); Random testing -----");
@@ -214,13 +215,13 @@ public class A1 {
 
 			System.out
 					.println("----- TEST: diff (1); set 1-10 with 5-15 -----");
-			System.out.println("Should have BST containing 11-15");
+			System.out.println("Should have Tree containing 11-15");
 			FiniteSet exhaustTreeA = treeGen.exhaustTree(1, 10);
 			FiniteSet exhaustTreeAA = treeGen.exhaustTree(5, 15);
 			System.out.println(exhaustTreeA.diff(exhaustTreeAA));
 
 			System.out.println("----- TEST: diff (2); set 1-5 with 6-10 -----");
-			System.out.println("Should return BST 6-10");
+			System.out.println("Should return Tree 6-10");
 			FiniteSet exhaustTreeB = treeGen.exhaustTree(1, 5);
 			FiniteSet exhaustTreeBB = treeGen.exhaustTree(6, 10);
 			System.out.println(exhaustTreeB.diff(exhaustTreeBB));
@@ -328,3 +329,4 @@ public class A1 {
 	
 	// end of main
 }
+*/
