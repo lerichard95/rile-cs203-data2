@@ -73,7 +73,7 @@ public class Leaf<T extends Comparable<T>>
         //Return a new Tree with empty left/rights
         //with the added key elt
         //TODO: Ensure new constructor
-        return new Tree(new Leaf(), elt, 1, new Leaf());
+        return new Tree<T>(new Leaf<T>(), elt, 1, new Leaf<T>());
     }
 
     /**
@@ -93,7 +93,7 @@ public class Leaf<T extends Comparable<T>>
      * @return A new Leaf
      */
     public FiniteBag<T> remove(T elt) {
-        return new Leaf();
+        return new Leaf<T>();
     }
 
     //Thanks to Atticus K for this
@@ -114,7 +114,7 @@ public class Leaf<T extends Comparable<T>>
      * @return FiniteBag representing the intersection of the current Leaf with the FiniteBag
      */
     public FiniteBag<T> inter(FiniteBag<T> u) {
-        return new Leaf();
+        return new Leaf<T>();
     }
 
     /**

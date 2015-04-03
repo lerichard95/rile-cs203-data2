@@ -140,13 +140,13 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
 
         //TODO: Comparison less than
         if (elt.compareTo(this.key) < 0) {
-            return new Tree(left.add(elt), key, right);
+            return new Tree<T>(left.add(elt), key, this.count ,right);
         }
 
         //TODO: Comparison greater than
         // elt > this.key
         else {
-            return new Tree(left, key, right.add(elt));
+            return new Tree<T>(left, key, this.count, right.add(elt));
         }
     }
 

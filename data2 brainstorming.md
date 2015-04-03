@@ -33,6 +33,13 @@ Your bags should be polymorphic, i.e. use generics to allow any kind of contents
 [~] Write API (interface) for FiniteBag
 
 ##Concrete Implementations
+
+#Implementation PROCESS:
+1. Write JavaDoc for functions
+2. Write tests for function
+3. Write implementations
+
+###Reworking data1
 [x] Refactor/rewrite Leaf
 [x] Add generics to Leaf
 [x] Make generics comparable for Leaf
@@ -41,29 +48,54 @@ Your bags should be polymorphic, i.e. use generics to allow any kind of contents
 [x] Rebuild constructor for Tree to accomodate int count
 [x] Add generics to Tree
 [~] Make generics comparable for Tree
-	- issue: Use comparable methods in the generics for implementing an AVL tree...
+	- issue: Use comparable methods in the generics for implementings an AVL 
+	tree...
 
+###
+
+###Iteration abstraction
+[ ] Make FiniteBag implement Iterable functions
 [ ] 
 
-PROCESS:
-1. Write JavaDoc for functions
-2. Write tests for function
-3. Write implementations
+[ ] 
+[ ] Implement AVL trees for Tree class
+
 
 ##Testing
+===
+
+###Testing tools
 [ ] Retool the random tree generation to work with generics...
 [ ] Rewrite tests to work with generics/AVL trees...
 
+###Leaf
+Functions of Leaf to test:
+[ ] Leaf 
+    - don't test constructor
+[x] empty
+[ ] toString
+[x] size
+[x] isEmptyHuh
+[ ] member
+[ ] add
+[ ] equals
+[ ] remove
+[ ] union
+[ ] inter
+[ ] diff
+[ ] subset
+[ ] equal
+[ ] multiplicity
+
 ##Writing implementations
 [ ] Comment out unused functions
+[ ] Test-first programming— write test first!
 
 ===
 
 #Research/planning
 [x] Learn what a multiset is
 [ ] List properties of multisets
-
-[ ] How to create a hashmap
 [x] Use Java generics examples
 [x] Read about JavaDoc syntax for manual
 

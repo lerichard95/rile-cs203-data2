@@ -9,7 +9,7 @@ import java.util.Random;
  * This is the main method that will invoke the tests
  */
 public class Data2 {
-    Random rand = new Random();
+    public static Random rand = new Random();
 
     public static void main(String[] args) {
         //  Using the tester library
