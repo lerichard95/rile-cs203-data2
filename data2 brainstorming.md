@@ -120,7 +120,7 @@ http://en.wikipedia.org/wiki/Set_(abstract_data_type)#Multiset
 [x] Devise Abstraction strategy- what should be an interface?
   - What operations should be done on the finite bag?
   - Can items be removed from finite bags?
-[ ]
+[ ] 
 [ ] 
 
 

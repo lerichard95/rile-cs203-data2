@@ -3,9 +3,16 @@
  *
  * @param <T> Generic type for the Leaf
  */
-public class Leaf<T extends Comparable<T>>
-// TODO: Leaf will implement FiniteBag
-        implements FiniteBag<T> {
+public class Leaf<T extends Comparable<T>> implements FiniteBag<T>, Iterator<FiniteBag<T>> {
+
+    /* Iteration abstraction functions */
+    public Iterator<T> iterator() {
+
+    }
+
+
+    /* End iteration abstraction functions */
+
 
     /**
      * A Leaf represents an empty node.
@@ -67,13 +74,41 @@ public class Leaf<T extends Comparable<T>>
 
     /**
      * @param elt The item to be inserted
-     * @return A new FiniteBag containing elt
+     * @return a new Tree with elt for key, and 1 for count.
      */
     public FiniteBag<T> add(T elt) {
         //Return a new Tree with empty left/rights
         //with the added key elt
-        //TODO: Ensure new constructor
         return new Tree<T>(new Leaf<T>(), elt, 1, new Leaf<T>());
+    }
+
+    /**
+     * @param item The generic item to be placed addCount times into the FiniteBag
+     * @param n    The multiplicity of item to be added to the multiset
+     * @return a new Tree with elt for key, and n for count
+     */
+    public FiniteBag<T> addN(T item, int n) {
+        return new Tree<T>(new Leaf<T>(), elt, n, new Leaf<T>());
+    }
+
+    /**
+     * Just returns a Leaf since items cannot be removed from the empty set
+     *
+     * @param elt item— irrelevant and not used
+     * @return A new Leaf
+     */
+    public FiniteBag<T> remove(T elt) {
+        return new Leaf<T>();
+    }
+
+    /**
+     *
+     * @param item Item whose multiplicity will be decremented by n
+     * @param n    Multiplicity to be decremented by n
+     * @return A new Tree with item's count decremented by n
+     */
+    public FiniteBag<T> removeN(T item, int n) {
+        return new Leaf<T>();
     }
 
     /**
@@ -86,15 +121,6 @@ public class Leaf<T extends Comparable<T>>
         return (u.isEmptyHuh());
     }
 
-    /**
-     * Just returns a Leaf since items cannot be removed from the empty set
-     *
-     * @param elt item— irrelevant and not used
-     * @return A new Leaf
-     */
-    public FiniteBag<T> remove(T elt) {
-        return new Leaf<T>();
-    }
 
     //Thanks to Atticus K for this
     //And Nicholas B for explaining how this works
@@ -145,7 +171,6 @@ public class Leaf<T extends Comparable<T>>
     }
 
     /**
-     *
      * @param item The generic item to calculate multiplicity of
      * @return int representing the multiplicity
      */

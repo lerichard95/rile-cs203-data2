@@ -7,52 +7,76 @@ import java.util.Collection;
  *
  * @param <T> The generic datatype that the FiniteBag will hold.
  */
-public interface FiniteBag<T extends Comparable<T>> {
+public interface FiniteBag<T extends Comparable<T>> extends Iterable<T> {
+
+    /* Iteration abstraction functions */
+
+    /* End iteration abstraction functions */
 
     /**
-     * @param item The generic item to be placed into the FiniteBag
-     * @return A new instance of FiniteBag with item added
+     * Increase the multiplicity of item in the FiniteBag by 1
+     *
+     * @param item Item whose multiplicity will be incremented by 1
+     * @param n    Multiplicity to be incremented by 1
+     * @return A new instance of FiniteBag with the multiplicity of item incremented by 1
      */
-    public FiniteBag<T> add(T item);
+    FiniteBag<T> add(T item);
 
     /**
-     * @param item The generic item to be removed from the FiniteBag
-     * @return A new instance of FiniteBag with item removed
+     * @param item The generic item to be placed addCount times into the FiniteBag
+     * @param n    The multiplicity of item to be added to the multiset
+     * @return A new FiniteBag with the elements added
      */
-    public FiniteBag<T> remove(T item);
+    FiniteBag<T> addN(T item, int n);
+
+    /**
+     * Decrease the multiplicity of item in the FiniteBag by 1
+     *
+     * @param item Item whose multiplicity will be incremented by n
+     * @return A new instance of FiniteBag with the multiplicity of item decremented by 1
+     */
+    FiniteBag<T> remove(T item);
+
+    /**
+     * Decrease the multiplicity of item in the FiniteBag by n
+     *
+     * @param item Item whose multiplicity will be decremented by n
+     * @param n    Multiplicity to be decremented by n
+     * @return A new instance of FiniteBag with the multiplicity of item decremented by n
+     */
+    FiniteBag<T> removeN(T item, int n);
 
     /**
      * @param item The generic item
-     * @return A boolean representing the
+     * @return A boolean representing if the item is in the FiniteBag
      */
-    public boolean member(T item);
+    boolean member(T item);
 
     /**
      * @param item The generic item to calculate multiplicity of
      * @return An int representing the multiplicity of the element
      */
-    public int multiplicity(T item);
+    int multiplicity(T item);
 
     /**
      * @return A boolean if the FiniteBag is empty
      */
-    public boolean isEmptyHuh();
+    boolean isEmptyHuh();
 
     /**
      * @return An int representing the cardinality of the FiniteBag
      */
-    public int size();
+    int size();
 
     // Set property stuff
-    public FiniteBag<T> union(FiniteBag<T> b);
+    FiniteBag<T> union(FiniteBag<T> b);
 
-    public FiniteBag<T> inter(FiniteBag<T> b);
+    FiniteBag<T> inter(FiniteBag<T> b);
 
     //TODO: Don't do sum— multiset sum will be done in place of union.
-//    public FiniteBag<T> sum(FiniteBag<T> b);
+//     FiniteBag<T> sum(FiniteBag<T> b);
 
-    public FiniteBag<T> diff(FiniteBag<T> b);
-
+    FiniteBag<T> diff(FiniteBag<T> b);
 
 }
 

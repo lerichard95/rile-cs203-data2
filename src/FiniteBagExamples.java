@@ -17,9 +17,7 @@ public class FiniteBagExamples {
         t.checkExpect(emptLeaf.isEmptyHuh(), true, "testLeaf: isEmptyHuh()");
 
 
-
     }
-
 
     public void testTreeInt(Tester t) {
         TreeGenInt treeGeneratorIntegers = new TreeGenInt();

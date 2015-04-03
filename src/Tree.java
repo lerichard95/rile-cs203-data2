@@ -5,7 +5,6 @@
  */
 
 public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
-    // Instance variables for a Tree
     FiniteBag<T> left;
     T key;
     int count;
@@ -109,6 +108,17 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
     }
 
     /**
+     *
+     * @param item The generic item to be placed addCount times into the FiniteBag
+     * @param n    The multiplicity of item to be added to the multiset
+     * @return
+     */
+    public FiniteBag<T> addN(T item, int n) {
+        return null;
+    }
+
+
+    /**
      * @param elt The item to be inserted
      * @return A new FiniteSet containing elt
      */
@@ -140,7 +150,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
 
         //TODO: Comparison less than
         if (elt.compareTo(this.key) < 0) {
-            return new Tree<T>(left.add(elt), key, this.count ,right);
+            return new Tree<T>(left.add(elt), key, this.count, right);
         }
 
         //TODO: Comparison greater than
@@ -161,20 +171,32 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
     public FiniteBag<T> remove(T elt) {
 
         // Thanks to Atticus K for this implementation
-        if (elt < this.key) {
+        if (elt.compareTo(this.key) <= 0) {
             // Returning a new Tree allows each recursive call
             // to "rebuild" the Tree tree
-            return new Tree(this.left.remove(elt), key, right);
+            return new Tree<T>(this.left.remove(elt), key, right);
         }
 
         if (elt > this.key) {
-            return new Tree(left, key, this.right.remove(elt));
+            return new Tree<T>(left, key, this.right.remove(elt));
         } else {
             // Combine the left and right trees but ignore the current key
             return this.left.union(this.right);
         }
 
     }
+
+    /**
+     *
+     * @param item Item whose multiplicity will be decremented by n
+     * @param n    Multiplicity to be decremented by n
+     * @return
+     */
+    public FiniteBag<T> removeN(T item, int n) {
+        return null;
+    }
+
+
 
     /**
      * Returns a new instance of FiniteSet that represents the union of this FiniteBag and u
@@ -210,7 +232,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
             //  (Recursively call inter on left and right children)
             //  Preserve current key
 
-            return new Tree(this.left.inter(u), this.key, this.count + 1,
+            return new Tree<T>(this.left.inter(u), this.key, this.count + 1,
                     this.right.inter(u));
         }
         //  else case: current key is not a member of u,

@@ -1,10 +1,12 @@
 import java.util.Random;
 
+/**
+ * This is a class that tests the Tree class with Integers.
+ */
 public class TreeGenInt {
 	FiniteBag<Integer> tree;
 	public TreeGenInt() {
 	}
-
 	//  Thanks to Nicholas Burka for acknowedging the importance of setting
 	//  tree to accomodate for lack of mutation
 	public FiniteBag<Integer> randTree(int num, int range) {
