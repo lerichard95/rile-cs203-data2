@@ -1,16 +1,15 @@
+import java.lang.Iterable;
+import java.lang.
+import java.util.Iterator;
+
 /**
  * Leaf represents an empty node
  *
  * @param <T> Generic type for the Leaf
  */
-public class Leaf<T extends Comparable<T>> implements FiniteBag<T>, Iterator<FiniteBag<T>> {
+public class Leaf<T extends Comparable<T>> implements FiniteBag<T>, Iterable<T> {
 
     /* Iteration abstraction functions */
-    public Iterator<T> iterator() {
-
-    }
-
-
     /* End iteration abstraction functions */
 
 
@@ -102,7 +101,6 @@ public class Leaf<T extends Comparable<T>> implements FiniteBag<T>, Iterator<Fin
     }
 
     /**
-     *
      * @param item Item whose multiplicity will be decremented by n
      * @param n    Multiplicity to be decremented by n
      * @return A new Tree with item's count decremented by n
