@@ -1,15 +1,45 @@
-import java.lang.Iterable;
-import java.lang.
-import java.util.Iterator;
-
 /**
  * Leaf represents an empty node
  *
  * @param <T> Generic type for the Leaf
  */
-public class Leaf<T extends Comparable<T>> implements FiniteBag<T>, Iterable<T> {
+public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
 
     /* Iteration abstraction functions */
+
+    /**
+     * LeafGen is the generator, produces elements to be iterated through
+     */
+    private class LeafGen implements Sequence<T> {
+
+        LeafGen() {
+        }
+
+        @Override
+        // TODO: What should be returned?
+        public FiniteBag<T> here() {
+            return new Leaf();
+        }
+
+        @Override
+        public boolean notEmpty() {
+            // Leaf IS empty so return false
+            return false;
+        }
+
+        /**
+         * @return
+         */
+        public Sequence<T> next() {
+            return this;
+        }
+
+
+    }
+
+    public Sequence<T> seq() {
+        return new LeafGen();
+    }
     /* End iteration abstraction functions */
 
 
@@ -87,7 +117,7 @@ public class Leaf<T extends Comparable<T>> implements FiniteBag<T>, Iterable<T> 
      * @return a new Tree with elt for key, and n for count
      */
     public FiniteBag<T> addN(T item, int n) {
-        return new Tree<T>(new Leaf<T>(), elt, n, new Leaf<T>());
+        return new Tree<T>(new Leaf<T>(), item, n, new Leaf<T>());
     }
 
     /**

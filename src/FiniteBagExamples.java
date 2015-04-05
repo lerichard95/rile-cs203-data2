@@ -20,7 +20,7 @@ public class FiniteBagExamples {
     }
 
     public void testTreeInt(Tester t) {
-        TreeGenInt treeGeneratorIntegers = new TreeGenInt();
+        RandTreeGenInt treeGeneratorIntegers = new RandTreeGenInt();
 
     }
 

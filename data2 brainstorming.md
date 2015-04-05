@@ -56,14 +56,19 @@ Your bags should be polymorphic, i.e. use generics to allow any kind of contents
 ###Iteration abstraction
 [ ] Make FiniteBag implement Iterable functions
 
-[ ] Make a Sequence interface
-[ ] Make a Sequenced interface
+[x] Make a Sequence interface - 
+[x] Make a Sequenced interface -
 
 Sequence is just a functional version of Iterable. 
 Iterators are mutable...
 
 Sequenced (things that are sequenced) - Iterable
 Sequence - Iterator is the 
+
+[~] Classes of the FiniteBag need to have generators of their own 
+[~] Generator for Tree: TreeGen
+[ ] Generator for Leaf: TreeGen
+(Refer to 16.java)
 
 === 
 

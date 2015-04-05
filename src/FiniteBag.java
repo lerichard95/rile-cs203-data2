@@ -7,7 +7,7 @@ import java.util.Collection;
  *
  * @param <T> The generic datatype that the FiniteBag will hold.
  */
-public interface FiniteBag<T extends Comparable<T>> extends Iterable<T> {
+public interface FiniteBag<T extends Comparable<T>> extends Sequenced<T> {
 
     /* Iteration abstraction functions */
 

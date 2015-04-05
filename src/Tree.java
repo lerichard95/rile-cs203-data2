@@ -5,10 +5,14 @@
  */
 
 public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
-    FiniteBag<T> left;
-    T key;
-    int count;
-    FiniteBag<T> right;
+    /**
+     * Tree state variables are private as to not expose rep
+     */
+    private FiniteBag<T> left;
+    private T key;
+    private int count;
+    private FiniteBag<T> right;
+
 
     /**
      * Constructor will create a new instance of Tree
@@ -25,6 +29,60 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
         this.key = k;
         this.count = c;
         this.right = r;
+    }
+
+    //  TODO: Question - Is this static or should it be instantiated??
+
+    /**
+     * TreeGen is a generator— it will produce elements that will be acted upon by iteration
+     */
+    private class TreeGen implements Sequence<T> {
+        // The tree to be iterated through:
+        private Tree<T> tree;
+        private T thing;
+
+        // Assign the state variables of the generator
+        TreeGen(Tree<T> it) {
+            // REQUIRES: it != null
+            this.tree = it;
+            // TODO: What should the initial item be?? Left most tree node?
+            this.thing = tree.min()?;
+        }
+
+        /**
+         * Return the current item in the sequence.
+         *
+         * @return Current node of the Tree
+         */
+        public FiniteBag<T> here() {
+            if (this.tree.left.notEmpty()) {
+                return this.tree.left;
+            }
+        }
+
+        /**
+         * Determine if the sequence is empty
+         *
+         * @return true is the sequence is empty
+         */
+        public boolean notEmpty() {
+            return false;
+        }
+
+        /**
+         * Returns a sequence containing the next element in the sequence
+         *
+         * @return return the next node (not item) in the sequence
+         */
+        public Sequence<T> next() {
+            return new TreeGen ;
+        }
+
+    }
+
+    public Sequence<T> seq() {
+        // TODO: Return a generator that allows iteration through the elements of Tree...
+        return new TreeGen(this);
     }
 
     /**
@@ -108,7 +166,6 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
     }
 
     /**
-     *
      * @param item The generic item to be placed addCount times into the FiniteBag
      * @param n    The multiplicity of item to be added to the multiset
      * @return
@@ -187,7 +244,6 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
     }
 
     /**
-     *
      * @param item Item whose multiplicity will be decremented by n
      * @param n    Multiplicity to be decremented by n
      * @return
@@ -195,7 +251,6 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
     public FiniteBag<T> removeN(T item, int n) {
         return null;
     }
-
 
 
     /**
