@@ -8,38 +8,14 @@ public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
     /* Iteration abstraction functions */
 
     /**
-     * LeafGen is the generator, produces elements to be iterated through
+     * Returns a sequence of Leaf
+     *
+     * @return Returns an SequenceEmpty
      */
-    private class LeafGen implements SequenceEmpty<FiniteBag<T>> {
-
-        LeafGen() {
-        }
-
-        @Override
-        // TODO: What should be returned?
-        public FiniteBag<T> here() {
-            return new Leaf();
-        }
-
-        @Override
-        public boolean notEmpty() {
-            // Leaf IS empty so return false
-            return false;
-        }
-
-        /**
-         * @return
-         */
-        public Sequence<T> next() {
-            return this;
-        }
-
-
-    }
-
     public Sequence<T> seq() {
-        return new LeafGen();
+        return new SequenceEmpty<T>();
     }
+
     /* End iteration abstraction functions */
 
 
@@ -205,4 +181,6 @@ public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
     public int multiplicity(T item) {
         return 0;
     }
+
+
 }

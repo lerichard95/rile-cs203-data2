@@ -4,7 +4,7 @@
  * @param <T> A generic type that must extend Comparable<T>
  */
 
-public class Tree<T extends Comparable<T>> implements FiniteBag<T>  {
+public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> {
     /**
      * Tree state variables are private as to not expose rep
      */
@@ -31,85 +31,46 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>  {
         this.right = r;
     }
 
-
-/*    *//**
-     * Implement's Java's Comparable interface...
-     * @param that
-     * @return Returns 1
-     *//*
-    public int compareTo(FiniteBag<T> that) {
-        if (this.equals(that)) {
-            return 0;
-        } else if {
-            return -1;
-        }
-    }*/
-
-    //  TODO: Question - Is this static or should it be instantiated??
+    /**
+     * Returns a sequence of the Tree
+     *
+     * @return A Sequence of the elements of Tree...
+     */
+    public Sequence<T> seq() {
+        return new Combine<T>(
+                Middle<T>(this.key, this.count),
+                new Combine<T>(left.seq(), right.seq())
+        );
+    }
 
     /**
-     * Iteration abstraction
-     * TreeGen is a generator— it will produce elements that will be acted upon by iteration
+     * Return the current item of the sequence.
+     *
+     * @return key - the key of
      */
-    private class TreeGen implements Sequence<T> {
-        // The tree to be iterated through:
-        private Tree<T> tree;
-        Tree<T> genLeft;
-        Tree<T> genRight;
-        private T thing;
-
-        // Assign the state variables of the generator
-        TreeGen(Tree<T> it,) {
-            // REQUIRES: it != null
-            this.tree = it;
-            // TODO: What should the initial item be?? Left most tree node?
-            this.thing = tree.min();
-        }
-
-        /**
-         * Return the current item in the sequence.
-         *
-         * @return Current node of the Tree
-         */
-        public FiniteBag<T> here() {
-            // TODO: Should this return the left-most tree branch?
-            return tree;
-            return this.genLeft.here();
-        }
-
-        /**
-         * Determine if the sequence is empty
-         *
-         * @return true is the sequence is empty
-         */
-        public boolean notEmpty() {
-            return tree.isEmptyHuh();
-        }
-
-        /**
-         * Returns a sequence containing the next element in the sequence
-         *
-         * @return return the next node (not item) in the sequence
-         */
-        public Sequence<T> next() {
-            //TODO: How would you get the next element of the sequence?
-            if (!tree.left.isEmptyHuh()) {
-
-            }
-
-            if (tree.right.isEmptyHuh()) {
-                return new TreeGen(tree);
-            }
-
-
-        }
-
+    public T here() {
+        return this.key;
     }
 
-    public Sequence<T> seq() {
-        // TODO: Return a generator that allows iteration through the elements of Tree...
-        return new TreeGen(this);
+    /**
+     * Determine if there is something inside the sequence. Always true for Tree branches because
+     * empty Sequence is represented with SequenceEmpty
+     *
+     * @return true if the sequence contains something
+     */
+    public boolean isSomethingThere() {
+        return true;
     }
+
+    /**
+     * Returns a sequence containing the next element in the sequence
+     *
+     * @return return the next node (not item) in the sequence
+     */
+    public Sequence<T> next() {
+        return new Combine(this.left.seq(), this.right.seq());
+    }
+
 
     /**
      * String representation used for console printing
@@ -250,6 +211,13 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>  {
      */
 
     // TODO: AVL version of remove, remember to use Comparable functions
+
+
+    /**
+     *
+     * @param elt
+     * @return
+     */
     public FiniteBag<T> remove(T elt) {
 
         // Thanks to Atticus K for this implementation
@@ -348,7 +316,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>  {
     public boolean subset(FiniteBag<T> u) {
         //  Checks if current key is a member of u,
         //  Then recursively calls subset on left/right branches
-        return u.member(this.key) && this.left.subset(u) && this.right.subset(u);
+        return u.member(this.key) && this.left.isSubset(u) && this.right.isSubset(u);
     }
 
     /**
@@ -361,7 +329,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>  {
         //  By definition of subset,
         //  sets this and u are equivalent if
         //  this and u are subsets of each other.
-        return this.subset(u) && u.subset(this);
+        return this.subset(u) && u.isSubset(this);
     }
 
 

@@ -12,7 +12,7 @@ public class AS_Union<T extends Comparable> implements Sequence<T> {
 
     @Override
     public T here() {
-        if (left.notEmpty()) {
+        if (left.isSomethingThere()) {
             return this.left.here();
         } else {
             return this.right.here();
@@ -20,8 +20,8 @@ public class AS_Union<T extends Comparable> implements Sequence<T> {
     }
 
     @Override
-    public boolean notEmpty() {
-        return left.notEmpty() && right.notEmpty();
+    public boolean isSomethingThere() {
+        return left.isSomethingThere() && right.isSomethingThere();
     }
 
     @Override

@@ -70,13 +70,13 @@ Your bags should be polymorphic, i.e. use generics to allow any kind of contents
 Sequences are like lists BUT they are pay-as-you-go performance instead
 [ ] Make Tree extend Sequence
 
-[ ] Make a Combine class
-[ ] Combine extends Sequence
+[x] Make a Combine class
+[x] Combine extends Sequence
 
 [ ] Make a Middle class
 [ ] Middle extends Sequence
 
-[ ] Write the seq() function 
+[ ] Write the seq() function for 
 
 
 

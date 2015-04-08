@@ -75,6 +75,9 @@ public interface FiniteBag<T extends Comparable<T>> extends Sequenced<T> {
 
     FiniteBag<T> inter(FiniteBag<T> b);
 
+    boolean isSubset(FiniteBag<T> b);
+
+
     //TODO: Don't do sum— multiset sum will be done in place of union.
 //     FiniteBag<T> sum(FiniteBag<T> b);
 

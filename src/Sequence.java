@@ -1,6 +1,7 @@
 /**
- * Sequence is a generator- produces the elements used in the iteration
- * Created by richard on 4/3/15.
+ * A sequence is similar to a list, but has pay-as-you-go performance
+ *
+ *
  */
 public interface Sequence<E> {
     /**
@@ -13,14 +14,14 @@ public interface Sequence<E> {
      * Determine if the sequence is empty
      * @return true is the sequence is empty
      */
-    public boolean notEmpty();
+    public boolean isSomethingThere();
 
     /**
      * Returns a sequence containing the next element in the sequence
      * @return return the next node (not item) in the sequence
      */
     public Sequence<E> next();
-    // If notEmpty returns false, then next() can return anything and
+    // If isSomethingThere returns false, then next() can return anything and
     // here() can return anything
 
 }

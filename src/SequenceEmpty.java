@@ -4,7 +4,7 @@
 public class SequenceEmpty<T> implements Sequence<T> {
 
     /**
-     * Doesn't need to do anything
+     * Constructor is not needed
      */
     public SequenceEmpty() {
     }
@@ -25,7 +25,7 @@ public class SequenceEmpty<T> implements Sequence<T> {
      *
      * @return Always false
      */
-    public boolean notEmpty() {
+    public boolean isSomethingThere() {
         return false;
     }
 
