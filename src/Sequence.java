@@ -7,7 +7,7 @@ public interface Sequence<T extends Comparable<T>> {
      *  Return the current item of the sequence.
      * @return Type t, current item of the sequence
      */
-    public FiniteBag<T> here();
+    public T here();
 
     /**
      * Determine if the sequence is empty

@@ -46,7 +46,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
             // REQUIRES: it != null
             this.tree = it;
             // TODO: What should the initial item be?? Left most tree node?
-            this.thing = tree.min()?;
+            this.thing = tree.min();
         }
 
         /**
@@ -55,9 +55,8 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
          * @return Current node of the Tree
          */
         public FiniteBag<T> here() {
-            if (this.tree.left.notEmpty()) {
-                return this.tree.left;
-            }
+            // TODO: Should this return the left-most tree branch?
+            return tree;
         }
 
         /**
@@ -66,7 +65,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
          * @return true is the sequence is empty
          */
         public boolean notEmpty() {
-            return false;
+            return tree.isEmptyHuh();
         }
 
         /**
@@ -75,7 +74,16 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
          * @return return the next node (not item) in the sequence
          */
         public Sequence<T> next() {
-            return new TreeGen ;
+            //TODO: How would you get the next element of the sequence?
+            if (!tree.left.isEmptyHuh()) {
+
+            }
+
+            if (tree.right.isEmptyHuh()) {
+                return new TreeGen(tree);
+            }
+
+
         }
 
     }
@@ -121,8 +129,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
      * @return Boolean if the Tree is empty or not
      */
     public boolean isEmptyHuh() {
-        // Tree can never be empty. Leaf is used to represent empty nodes.
-        return false;
+        return this.left.isEmptyHuh() && this.right.isEmptyHuh();
         // return this.cardinality() == 0;
     }
 

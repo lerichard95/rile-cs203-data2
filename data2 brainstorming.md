@@ -1,6 +1,12 @@
 #Data2 Brainstorm/planning
 ##Richard Le
 
+##Urgent to ask
+[ ] Does lecture 15.java work for AVL trees? 
+[ ] How does next() work for 1hr 04m - AS_Union????
+[ ] How do you write TreeGen's here()? Should it return the key or the current item of the SEQUENCE?? confused
+[ ] What does AS_Union do in next()?
+
 #Prompt:
 Your bags should be polymorphic, i.e. use generics to allow any kind of contents. By "pure", we mean that operations on the set return new sets and do not modify the old set.
 
@@ -51,7 +57,7 @@ Your bags should be polymorphic, i.e. use generics to allow any kind of contents
 	- issue: Use comparable methods in the generics for implementings an AVL 
 	tree...
 
-###
+
 
 ###Iteration abstraction
 [ ] Make FiniteBag implement Iterable functions
