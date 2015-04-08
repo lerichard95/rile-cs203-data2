@@ -10,7 +10,7 @@ public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
     /**
      * LeafGen is the generator, produces elements to be iterated through
      */
-    private class LeafGen implements Sequence<T> {
+    private class LeafGen implements SequenceEmpty<FiniteBag<T>> {
 
         LeafGen() {
         }

@@ -2,7 +2,7 @@
  * Sequenced is an "iterator" - returns a generator.
  * Created by richard on 4/3/15.
  */
-public interface Sequenced<T extends Comparable<T>> {
+public interface Sequenced<T> {
     /**
      * seq() is an ITERATOR, a procedure which returns a GENERATOR (a Sequence)
      *

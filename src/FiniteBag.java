@@ -1,3 +1,5 @@
+import com.sun.xml.internal.xsom.impl.WildcardImpl;
+
 import java.util.Collection;
 
 /**

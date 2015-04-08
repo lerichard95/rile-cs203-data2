@@ -1,11 +1,13 @@
 #Data2 Brainstorm/planning
 ##Richard Le
 
-##Urgent to ask
-[ ] Does lecture 15.java work for AVL trees? 
-[ ] How does next() work for 1hr 04m - AS_Union????
-[ ] How do you write TreeGen's here()? Should it return the key or the current item of the SEQUENCE?? confused
-[ ] What does AS_Union do in next()?
+ANSWERED
+- Does lecture 15.java work for AVL trees? 
+- How does next() work for 1hr 04m - AS_Union????
+- How do you write TreeGen's here()? Should it return the key or the current item of the SEQUENCE?? confused
+- What does AS_Union do in next()?
+- Should FiniteBag extend Comparable???
+ - doesn't make sense for a Multiset to be greater than or less than another— by what criteria??
 
 #Prompt:
 Your bags should be polymorphic, i.e. use generics to allow any kind of contents. By "pure", we mean that operations on the set return new sets and do not modify the old set.
@@ -60,11 +62,25 @@ Your bags should be polymorphic, i.e. use generics to allow any kind of contents
 
 
 ###Iteration abstraction
-[ ] Make FiniteBag implement Iterable functions
+[x] Make a Sequence interface  
+[x] Make a Sequenced interface 
 
-[x] Make a Sequence interface - 
-[x] Make a Sequenced interface -
+[x] Make an EmptySequence class
 
+Sequences are like lists BUT they are pay-as-you-go performance instead
+[ ] Make Tree extend Sequence
+
+[ ] Make a Combine class
+[ ] Combine extends Sequence
+
+[ ] Make a Middle class
+[ ] Middle extends Sequence
+
+[ ] Write the seq() function 
+
+
+
+DEPRECATED
 Sequence is just a functional version of Iterable. 
 Iterators are mutable...
 
@@ -76,8 +92,14 @@ Sequence - Iterator is the
 [ ] Generator for Leaf: TreeGen
 (Refer to 16.java)
 
+
 === 
 
+##AVL TREES
+[ ] Add a height field
+[ ] Decide when the left or right rotation should occur
+[ ] Write the left rotation
+[ ] Write the right rotation
 [ ] Implement AVL trees for Tree class
 
 

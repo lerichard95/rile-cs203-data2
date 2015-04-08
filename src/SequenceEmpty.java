@@ -1,7 +1,7 @@
 /**
  * Represents an empty sequence
  */
-public class SequenceEmpty<T extends Comparable<T>> implements Sequence<T> {
+public class SequenceEmpty<T> implements Sequence<T> {
 
     /**
      * Doesn't need to do anything
@@ -15,7 +15,8 @@ public class SequenceEmpty<T extends Comparable<T>> implements Sequence<T> {
      * @return Returns a leaf from the empty sequence
      */
     //TODO: What should SequencedEmpty return anyway??
-    public FiniteBag<T> here() {
+    public T here() {
+        //TODO: Can throw an exception also-- see Sequence.java
         return null;
     }
 

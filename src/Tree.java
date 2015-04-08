@@ -4,7 +4,7 @@
  * @param <T> A generic type that must extend Comparable<T>
  */
 
-public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
+public class Tree<T extends Comparable<T>> implements FiniteBag<T>  {
     /**
      * Tree state variables are private as to not expose rep
      */
@@ -31,18 +31,35 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
         this.right = r;
     }
 
+
+/*    *//**
+     * Implement's Java's Comparable interface...
+     * @param that
+     * @return Returns 1
+     *//*
+    public int compareTo(FiniteBag<T> that) {
+        if (this.equals(that)) {
+            return 0;
+        } else if {
+            return -1;
+        }
+    }*/
+
     //  TODO: Question - Is this static or should it be instantiated??
 
     /**
+     * Iteration abstraction
      * TreeGen is a generator— it will produce elements that will be acted upon by iteration
      */
     private class TreeGen implements Sequence<T> {
         // The tree to be iterated through:
         private Tree<T> tree;
+        Tree<T> genLeft;
+        Tree<T> genRight;
         private T thing;
 
         // Assign the state variables of the generator
-        TreeGen(Tree<T> it) {
+        TreeGen(Tree<T> it,) {
             // REQUIRES: it != null
             this.tree = it;
             // TODO: What should the initial item be?? Left most tree node?
@@ -57,6 +74,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T> {
         public FiniteBag<T> here() {
             // TODO: Should this return the left-most tree branch?
             return tree;
+            return this.genLeft.here();
         }
 
         /**

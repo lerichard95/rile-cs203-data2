@@ -5,9 +5,9 @@ public class AS_Union<T extends Comparable> implements Sequence<T> {
     Sequence<T> left;
     Sequence<T> right;
 
-    AS_Union(Sequence<T> l, Sequence<T> r) {
-        this.left = l;
-        this.right = r;
+    AS_Union(Sequence<T> le, Sequence<T> ri) {
+        this.left = le;
+        this.right = ri;
     }
 
     @Override
