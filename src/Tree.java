@@ -215,23 +215,30 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
     // TODO: AVL version of remove, remember to use Comparable functions
 
     /**
+     * Removes an element from the Tree— by setting the multiplicity of an element to to 0
+     *
      * @param elt
-     * @return
+     * @return FiniteBag<T> where the element elt was changed
      */
     public FiniteBag<T> remove(T elt) {
-
         // Thanks to Atticus K for this implementation
-        if (elt.compareTo(this.key) <= 0) {
-            // Returning a new Tree allows each recursive call
-            // to "rebuild" the Tree tree
-            return new Tree<T>(this.left.remove(elt), key, right);
-        }
 
-        if (elt > this.key) {
-            return new Tree<T>(left, key, this.right.remove(elt));
+        // Enter the left tree
+        if (elt.compareTo(this.key) < 0) {
+            // Returning a new Tree allows each recursive call
+            // to "rebuild" the tree
+            return new Tree<T>(this.left.remove(elt), this.key, this.count, this.right);
+        }
+        // Enter the right tree
+        if (elt.compareTo(this.key) > 0) {
+            return new Tree<T>(this.left, this.key, this.count, this.right.remove(elt));
         } else {
+            return new Tree<T>(this.left, this.key,
+                    // Reset the multiplicity to 0
+                    0,
+                    this.right);
             // Combine the left and right trees but ignore the current key
-            return this.left.union(this.right);
+            //return this.left.union(this.right);
         }
 
     }
@@ -239,7 +246,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
     /**
      * @param item Item whose multiplicity will be decremented by n
      * @param n    Multiplicity to be decremented by n
-     * @return
+     * @return FiniteBag where the multiplicity of item was decreased by n
      */
     public FiniteBag<T> removeN(T item, int n) {
         return null;

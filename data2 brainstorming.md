@@ -76,6 +76,12 @@ Sequences are like lists BUT they are pay-as-you-go performance instead
 [x] Make a Middle class
 [x] Middle extends Sequence
 
+##BAG
+[x] Add a count field
+[ ] Tree remove() for bag
+[ ] Make removeN work for bags
+[ ] Lookup function
+	[ ] lookup only returns true if count > 0
 
 
 DEPRECATED
@@ -94,6 +100,8 @@ Sequence - Iterator is the
 === 
 
 ##AVL TREES
+
+
 [ ] Add a height field
 [ ] Decide when the left or right rotation should occur
 [ ] Write the left rotation
@@ -103,6 +111,9 @@ Sequence - Iterator is the
 
 ##Testing
 ===
+
+###Migration
+[ ] Migrate tests from data1 to data2
 
 ###Testing tools
 [ ] Retool the random tree generation to work with generics...
