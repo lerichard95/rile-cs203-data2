@@ -5,49 +5,7 @@ public class A1 {
     public static void main(String[] args) {
 
 
-        // MORE TESTING: remove
-        System.out
-                .println("----- TEST: remove (1); "
-                        + "remove test 1: make an exhaustive tree and remove all -----");
-        System.out.println("Should print Tree representing 1-10");
-        TreeGen treeGen = new TreeGen();
-        FiniteSet exhaustTree = treeGen.exhaustTree(1, 10);
 
-        System.out.println("Initial exhaustTree:");
-        System.out.println(exhaustTree);
-
-        System.out.println("Begin removing");
-        for (int i = 1; i <= 10; i++) {
-            exhaustTree = exhaustTree.remove(i);
-            System.out.println(exhaustTree);
-
-        }
-
-        System.out
-                .println("----- TEST: remove (2); remove items from an empty set -----");
-        System.out.println("Should print Leaf multiple times");
-        FiniteSet testLeaf = new Leaf();
-        System.out.println("Initial Leaf:");
-        System.out.println(testLeaf);
-        System.out.println("Start testLeaf.remove() calls:");
-        for (int i = 1; i <= 10; i++) {
-            testLeaf = testLeaf.remove(i);
-            System.out.println(testLeaf);
-        }
-        // reset testleaf for future use
-        testLeaf = new Leaf();
-
-        System.out.println("----- TEST: union (1); "
-                + "empty set and non-empty set -----");
-        // Union of empty set and non-empty set
-        System.out.println("Should return the non-empty set");
-        FiniteSet testLeaf2 = new Leaf();
-        FiniteSet exhaustTree2 = treeGen.exhaustTree(1, 10);
-
-        System.out.println(testLeaf2.union(exhaustTree2));
-
-        // Union of overlapping elements should not contain duplicates
-        // because FiniteSets don't have duplicates?
         System.out.println("----- TEST: union (2); 2 identical sets -----");
         System.out.println("Should print Tree representing 1-10");
         FiniteSet exhaustTree3 = treeGen.exhaustTree(1, 10);

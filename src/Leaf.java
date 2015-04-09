@@ -8,21 +8,20 @@ public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
     /* Iteration abstraction functions */
 
     /**
+     * A Leaf represents an empty node.
+     */
+    Leaf() {
+    }
+
+    /* End iteration abstraction functions */
+
+    /**
      * Returns a sequence of Leaf
      *
      * @return Returns an SequenceEmpty
      */
     public Sequence<T> seq() {
         return new SequenceEmpty<T>();
-    }
-
-    /* End iteration abstraction functions */
-
-
-    /**
-     * A Leaf represents an empty node.
-     */
-    Leaf() {
     }
 
     /**

@@ -26,54 +26,49 @@ public class FiniteBagExamples {
         t.checkExpect(leaf.size(), 0, "size() - leaf");
         t.checkExpect(t4.size(), 7, "size() - t4");
 
+        // To be used for plenty other random stuff
         int randInt1 = Math.abs(rand.nextInt(1000));
+
         t.checkExpect(
                 RandTreeGenInt.randTree(randInt1, Math.abs(rand.nextInt())).size(),
                 randInt1, "randTree");
 
         // isEmptyHuh()
         t.checkExpect(leaf.isEmptyHuh(), true, "leaf.isEmptyHuh()");
-        t.checkExpect(RandTreeGenInt.randTree(randInt1, Math.abs(rand.nextInt())).isEmptyHuh(), false, "random tree");
+        t.checkExpect(RandTreeGenInt.randTree(randInt1, Math.abs(rand.nextInt())).isEmptyHuh(),
+                false, "random tree");
 
         // member()
-        FiniteBag<Integer> randExhaust1 = RandTreeGenInt.exhaustTree(0,randInt1);
+        FiniteBag<Integer> randExhaust1 = RandTreeGenInt.exhaustTree(0, randInt1);
         int randMember = rand.nextInt(randInt1);
         t.checkExpect(randExhaust1.member(randMember), true, "randMember");
         t.checkExpect(leaf.member(randMember), false, "randMember");
 
         // add()
-
         // Adding existing elements to Tree
-        // All of these should be identical
-        System.out.println("-------  Testing add() existing elements -------");
-        System.out.println(t4.add(4));
-        System.out.println(t4.add(1));
-        System.out.println(t4.add(2));
-        System.out.println(t4.add(3));
-        System.out.println(t4.add(5));
-        System.out.println(t4.add(6));
-        System.out.println(t4.add(7));
+        int randIntWithinRI1 = rand.nextInt(randInt1);
+        t.checkExpect(randExhaust1.add(randIntWithinRI1).multiplicity(randIntWithinRI1),
+                2, "randExhaust1.add(1)");
 
-        System.out
-                .println("-----  End testing add() existing elements -----");
+        // addN()
+        t.checkExpect(leaf.addN(randIntWithinRI1, randInt1).multiplicity(randIntWithinRI1),
+                randInt1, "addN to leaf()");
 
-        // Test: Implementation is pure
-        // Second prints should not return a Tree with the element
-        // added in line above...
+        // remove()
+        FiniteBag<Integer> exhaustTree2 = RandTreeGenInt.exhaustTree(0, randInt1);
+        for (int i = 0; i <= randInt1; i++) {
+            exhaustTree2 = exhaustTree2.remove(i);
+        }
+        t.checkExpect(exhaustTree2.size(), leaf.size(), "remove() all from exhaustTree2");
 
-        // Adding 0 and 8
-        System.out.println(t4.add(0).add(8));
-        System.out.println(t4);
+        t.checkExpect(leaf.removeN(randInt1, randInt1).size(), 0, "removeN() from Leaf");
 
-        System.out.println(t4.add(9));
-        System.out.println(t4.add(0).add(8));
+        // union()
+        // Union of empty set and non-empty set
+        t.checkExpect(leaf.union(randExhaust1), randExhaust1, "leaf.union(randExhaust1)");
+        FiniteBag<Integer> exhaustBagN = RandTreeGenInt.exhaustTreeN(0, randInt1, randInt1);
 
-        System.out.println("----- Adding larger numbers Y, "
-                + "then adding numbers in between largest number in "
-                + "initial set X -----");
 
-        System.out.println(t4.add(10).add(8));
-        System.out.println(t4.add(15).add(9).add(8));
 
     }
 

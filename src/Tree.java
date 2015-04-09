@@ -92,7 +92,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      * @return Returns a new FiniteBag— a leaf representing empty
      */
     public FiniteBag<T> empty() {
-        return new Leaf();
+        return new Leaf<T>();
     }
 
     /**
@@ -101,13 +101,18 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      * @return int representing the number of elements in the tree
      */
     public int size() {
-        // Count 1 for self,
-        // add the cardinality of the left and right Tree's
-        return 1 + this.left.size() + this.right.size();
+        int mySize = 0;
+
+        if (this.count > 0) {
+            mySize = 1;
+        }
+
+        return mySize + this.left.size() + this.right.size();
     }
 
     /**
      * Always returns true because there is always something in a Tree
+     *
      * @return Boolean if the Tree is empty or not
      */
     public boolean isEmptyHuh() {
@@ -159,8 +164,8 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      * @param n    The multiplicity of item to be added to the multiset
      * @return a new FiniteBag with item added, and appropriate value changed
      */
-    public FiniteBag<T> addN(T item, int n) {
-        return null;
+    public FiniteBag<T> add(T item) {
+        return this.addN(item, 1);
     }
 
 
@@ -169,13 +174,13 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      * @return A new FiniteSet containing elt
      */
     //TODO: AVL Tree version of add function
-    public FiniteBag<T> add(T elt) {
+    public FiniteBag<T> addN(T elt, int n) {
         // Thanks to Atticus K for a better way to imagine adding "nodes"
 
         // key == elt
         // Just return the Tree
         if ((this.key.compareTo(elt) == 0)) {
-            return this;
+            return new Tree<T>(this.left, this.key, this.count + n, this.right);
         }
 
         // elt < key
@@ -196,13 +201,13 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
 
         //TODO: Comparison less than
         if (elt.compareTo(this.key) < 0) {
-            return new Tree<T>(left.add(elt), key, this.count, right);
+            return new Tree<T>(left.addN(elt, n), key, this.count, right);
         }
 
         //TODO: Comparison greater than
         // elt > this.key
         else {
-            return new Tree<T>(left, key, this.count, right.add(elt));
+            return new Tree<T>(left, key, this.count, right.addN(elt, n));
         }
     }
 

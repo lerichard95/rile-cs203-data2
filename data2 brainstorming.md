@@ -85,6 +85,14 @@ Sequences are like lists BUT they are pay-as-you-go performance instead
 [u] intersect for bags
 [u] diff for bags
 
+Tree
+[x] add() for bags - 
+[x] addN() for bags
+
+Leaf
+[x] add() for bags  
+[x] addN() for bags
+
 === 
 
 ##AVL TREES
