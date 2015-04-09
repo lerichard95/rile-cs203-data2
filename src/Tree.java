@@ -107,10 +107,11 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
     }
 
     /**
+     * Always returns true because there is always something in a Tree
      * @return Boolean if the Tree is empty or not
      */
     public boolean isEmptyHuh() {
-        return this.left.isEmptyHuh() && this.right.isEmptyHuh();
+        return false;
         // return this.cardinality() == 0;
     }
 

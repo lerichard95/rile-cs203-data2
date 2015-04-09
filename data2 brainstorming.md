@@ -83,7 +83,7 @@ Sequences are like lists BUT they are pay-as-you-go performance instead
 [u] union for bags
 ( Same as multiset sum  )
 [u] intersect for bags
-[~] diff for bags
+[u] diff for bags
 
 === 
 
