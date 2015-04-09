@@ -67,6 +67,8 @@ public interface FiniteBag<T extends Comparable<T>> extends Sequenced<T> {
     int size();
 
     // Set property stuff
+
+    // Multiset union- add the multiplicities together
     FiniteBag<T> union(FiniteBag<T> b);
 
     FiniteBag<T> inter(FiniteBag<T> b);
@@ -77,10 +79,7 @@ public interface FiniteBag<T extends Comparable<T>> extends Sequenced<T> {
 
     boolean isEqual(FiniteBag<T> b);
 
+    // TODO: Don't do sum— multiset sum will be done in place of union.
+    //FiniteBag<T> sum(FiniteBag<T> b);
+
 }
-
-
-// TODO: Don't do sum— multiset sum will be done in place of union.
-//     FiniteBag<T> sum(FiniteBag<T> b);
-
-

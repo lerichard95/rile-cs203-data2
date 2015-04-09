@@ -68,11 +68,9 @@ Your bags should be polymorphic, i.e. use generics to allow any kind of contents
 [x] Make an EmptySequence class
 
 Sequences are like lists BUT they are pay-as-you-go performance instead
-[ ] Make Tree extend Sequence
-
+[x] Make Tree extend Sequence
 [x] Make a Combine class
 [x] Combine extends Sequence
-
 [x] Make a Middle class
 [x] Middle extends Sequence
 
@@ -82,22 +80,10 @@ Sequences are like lists BUT they are pay-as-you-go performance instead
 	[ ] member only returns true if count > 0
 [u] Tree remove() for bag
 [u] Make removeN work for bags
-
-
-
-
-DEPRECATED
-Sequence is just a functional version of Iterable. 
-Iterators are mutable...
-
-Sequenced (things that are sequenced) - Iterable
-Sequence - Iterator is the 
-
-[~] Classes of the FiniteBag need to have generators of their own 
-[~] Generator for Tree: TreeGen
-[ ] Generator for Leaf: TreeGen
-(Refer to 16.java)
-
+[u] union for bags
+( Same as multiset sum  )
+[u] intersect for bags
+[~] diff for bags
 
 === 
 
@@ -146,7 +132,7 @@ Functions of Leaf to test:
 
 #Research/planning
 [x] Learn what a multiset is
-[ ] List properties of multisets
+[x] List properties of multisets
 [x] Use Java generics examples
 [x] Read about JavaDoc syntax for manual
 
@@ -169,10 +155,8 @@ http://en.wikipedia.org/wiki/Set_(abstract_data_type)#Multiset
 #Planning the API
 ===
 [x] Devise Abstraction strategy- what should be an interface?
-  - What operations should be done on the finite bag?
-  - Can items be removed from finite bags?
-[ ] 
-[ ] 
+  - What operations should be done on the finite bag? 
+  - Can items be removed from finite bags? YES
 
 
 #Submission
@@ -201,3 +185,20 @@ These two pieces of the project will be weighted equally.
   - Describe the uses
   - Explain properties
   - Performance characteristics (linear, log, etc?)
+
+
+
+
+
+DEPRECATED
+Sequence is just a functional version of Iterable. 
+Iterators are mutable...
+
+Sequenced (things that are sequenced) - Iterable
+Sequence - Iterator is the 
+
+[~] Classes of the FiniteBag need to have generators of their own 
+[~] Generator for Tree: TreeGen
+[ ] Generator for Leaf: TreeGen
+(Refer to 16.java)
+
