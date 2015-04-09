@@ -341,7 +341,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
         //  remove the current key from u— if there is not overlap between sets,
         //  remove() will return the same set u
 
-        return this.left.union(this.right).diff(u.remove(this.key));
+        return this.left.union(this.right).diff(u.removeN(this.key, this.count));
     }
 
     /**
