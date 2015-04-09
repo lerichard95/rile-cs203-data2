@@ -78,10 +78,12 @@ Sequences are like lists BUT they are pay-as-you-go performance instead
 
 ##BAG
 [x] Add a count field
-[ ] Tree remove() for bag
-[ ] Make removeN work for bags
-[ ] Lookup function
-	[ ] lookup only returns true if count > 0
+[u] Make member() work for bag
+	[ ] member only returns true if count > 0
+[u] Tree remove() for bag
+[u] Make removeN work for bags
+
+
 
 
 DEPRECATED
@@ -100,8 +102,6 @@ Sequence - Iterator is the
 === 
 
 ##AVL TREES
-
-
 [ ] Add a height field
 [ ] Decide when the left or right rotation should occur
 [ ] Write the left rotation

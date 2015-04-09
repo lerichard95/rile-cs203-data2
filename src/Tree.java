@@ -137,7 +137,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      * @return true is blt is contained in Tree
      */
     public boolean member(T blt) {
-        if (this.key.equals(blt)) {
+        if (this.key.equals(blt) && (this.count > 0)) {
             return true;
         }
         // left and right need to be instance variables
@@ -249,7 +249,36 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      * @return FiniteBag where the multiplicity of item was decreased by n
      */
     public FiniteBag<T> removeN(T item, int n) {
-        return null;
+
+        // Thanks to Atticus K for this implementation
+
+        // Enter the left tree
+        if (item.compareTo(this.key) < 0) {
+            // Returning a new Tree allows each recursive call
+            // to "rebuild" the tree
+            return new Tree<T>(this.left.remove(item), this.key, this.count, this.right);
+        }
+        // Enter the right tree
+        if (item.compareTo(this.key) > 0) {
+            return new Tree<T>(this.left, this.key, this.count, this.right.remove(item));
+        }
+        // Assuming that compareTo will be equal - optimization: don't have to run Compare
+        // Only do this if count - n is non-negative
+        if ((this.count - n) >= 0) {
+            return new Tree<T>(this.left, this.key,
+                    // Subtract n from count
+                    this.count - n,
+                    this.right);
+        }
+        // Return the node with multiplicity of 0 if n is bigger than countv
+        else {
+            return new Tree<T>(this.left, this.key,
+                    // Reset the multiplicity to 0
+                    0,
+                    this.right);
+            // Combine the left and right trees but ignore the current key
+            //return this.left.union(this.right);
+        }
     }
 
 
