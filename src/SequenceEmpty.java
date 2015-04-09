@@ -14,10 +14,9 @@ public class SequenceEmpty<T> implements Sequence<T> {
      *
      * @return Returns a leaf from the empty sequence
      */
-    //TODO: What should SequencedEmpty return anyway??
     public T here() {
         //TODO: Can throw an exception also-- see Sequence.java
-        return null;
+        throw new RuntimeException("Cannot get the here() of a SequenceEmpty!");
     }
 
     /**

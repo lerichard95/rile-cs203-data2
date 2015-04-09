@@ -74,9 +74,6 @@ public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
         return false;
     }
 
-
-    //TODO: Make sure this is the correct return type
-
     /**
      * @param elt The item to be inserted
      * @return a new Tree with elt for key, and 1 for count.
@@ -159,7 +156,7 @@ public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
      * @param u FiniteBag to be compared to
      * @return True if leaf is a subset of u
      */
-    public boolean subset(FiniteBag<T> u) {
+    public boolean isSubset(FiniteBag<T> u) {
         //  leaf.subset(u) means is leaf a subset of u
         //The empty set is a subset of any set so return true
         return true;
@@ -169,7 +166,7 @@ public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
      * @param u FiniteBag to be compared with
      * @return True if FiniteBag is equal to this Leaf
      */
-    public boolean equal(FiniteBag<T> u) {
+    public boolean isEqual(FiniteBag<T> u) {
         //if u is empty, then it is equal to the empty set
         return u.isEmptyHuh();
     }

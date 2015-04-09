@@ -1,6 +1,7 @@
 /**
  * @author Richard Le
  */
+
 import tester.*;
 
 import java.util.Random;

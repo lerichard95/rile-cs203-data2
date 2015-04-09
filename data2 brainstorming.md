@@ -73,10 +73,8 @@ Sequences are like lists BUT they are pay-as-you-go performance instead
 [x] Make a Combine class
 [x] Combine extends Sequence
 
-[ ] Make a Middle class
-[ ] Middle extends Sequence
-
-[ ] Write the seq() function for 
+[x] Make a Middle class
+[x] Middle extends Sequence
 
 
 

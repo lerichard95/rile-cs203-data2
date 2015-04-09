@@ -1,7 +1,3 @@
-import com.sun.xml.internal.xsom.impl.WildcardImpl;
-
-import java.util.Collection;
-
 /**
  * FiniteBag is the API that abstracts from the implementations.
  * FiniteBag represents a multiset, a collection of elements that can occur multiple times
@@ -77,11 +73,14 @@ public interface FiniteBag<T extends Comparable<T>> extends Sequenced<T> {
 
     boolean isSubset(FiniteBag<T> b);
 
+    public FiniteBag<T> diff(FiniteBag<T> b);
 
-    //TODO: Don't do sum— multiset sum will be done in place of union.
-//     FiniteBag<T> sum(FiniteBag<T> b);
-
-    FiniteBag<T> diff(FiniteBag<T> b);
+    boolean isEqual(FiniteBag<T> b);
 
 }
+
+
+// TODO: Don't do sum— multiset sum will be done in place of union.
+//     FiniteBag<T> sum(FiniteBag<T> b);
+
 

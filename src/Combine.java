@@ -13,11 +13,11 @@ public class Combine<T> implements Sequence<T>, Sequenced<T> {
     /**
      * seq() is an ITERATOR, a procedure which returns a GENERATOR (a Sequence)
      *
-     * @return A generator which produces elements that will be iterated over
+     * @return A Sequence
      */
     @Override
     public Sequence<T> seq() {
-        return null;
+        return this;
     }
 
     /**
@@ -50,7 +50,7 @@ public class Combine<T> implements Sequence<T>, Sequenced<T> {
      */
     public Sequence<T> next() {
         if (one.isSomethingThere()) {
-            return new Combine(this.one.next(), this.two);
+            return new Combine<T>(this.one.next(), this.two);
         } else {
             return this.two.next();
         }

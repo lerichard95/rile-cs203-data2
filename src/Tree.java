@@ -38,7 +38,9 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      */
     public Sequence<T> seq() {
         return new Combine<T>(
-                Middle<T>(this.key, this.count),
+                // Sequence of this.key, repeated count times
+                new Middle<T>(this.key, this.count),
+                // Sequence of both the left and right sequences
                 new Combine<T>(left.seq(), right.seq())
         );
     }
@@ -68,7 +70,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      * @return return the next node (not item) in the sequence
      */
     public Sequence<T> next() {
-        return new Combine(this.left.seq(), this.right.seq());
+        return new Combine<T>(this.left.seq(), this.right.seq());
     }
 
 
@@ -154,7 +156,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
     /**
      * @param item The generic item to be placed addCount times into the FiniteBag
      * @param n    The multiplicity of item to be added to the multiset
-     * @return
+     * @return a new FiniteBag with item added, and appropriate value changed
      */
     public FiniteBag<T> addN(T item, int n) {
         return null;
@@ -212,9 +214,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
 
     // TODO: AVL version of remove, remember to use Comparable functions
 
-
     /**
-     *
      * @param elt
      * @return
      */
@@ -252,7 +252,6 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      * @param u FiniteBag to be unioned with
      * @return FiniteBag representing the union of u and .this
      */
-    // TODO: Implement AVL version of union
     public FiniteBag<T> union(FiniteBag<T> u) {
         // Thanks to Nicholas B for explaining the recursive nature of this
         return u.union(this.left).union(this.right).add(this.key);
@@ -269,7 +268,6 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      * @param u FiniteBag to be intersected with
      * @return A new FiniteBag representing the intersection of u and this Tree
      */
-    //TODO: Implement AVL intersection
     //Thanks to Atticus K for implementation
     public FiniteBag<T> inter(FiniteBag<T> u) {
         if (u.member(this.key)) {
@@ -297,7 +295,6 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      * @param u represents the FiniteBag to be difference'd with current Tree
      * @return FiniteBag representing the difference of the current Tree with u
      */
-    // TODO: Implement AVL difference
     //Thanks to Atticus K for implementation
     public FiniteBag<T> diff(FiniteBag<T> u) {
         //  start by unioning the left/right children,
@@ -313,7 +310,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      * @return True if this Tree is a subset of u
      */
     //  Thanks to Atticus K for implementation of subset and equal
-    public boolean subset(FiniteBag<T> u) {
+    public boolean isSubset(FiniteBag<T> u) {
         //  Checks if current key is a member of u,
         //  Then recursively calls subset on left/right branches
         return u.member(this.key) && this.left.isSubset(u) && this.right.isSubset(u);
@@ -325,11 +322,11 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      * @param u Tree to be compared with
      * @return True if u has same elements as this Tree
      */
-    public boolean equal(FiniteBag<T> u) {
+    public boolean isEqual(FiniteBag<T> u) {
         //  By definition of subset,
         //  sets this and u are equivalent if
         //  this and u are subsets of each other.
-        return this.subset(u) && u.isSubset(this);
+        return this.isSubset(u) && u.isSubset(this);
     }
 
 

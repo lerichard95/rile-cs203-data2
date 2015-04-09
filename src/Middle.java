@@ -1,24 +1,23 @@
 /**
+ * Middle is a special type of Sequence that represents the sequence of a key, with multiplicity count.
  * Created by richard on 4/8/15.
  */
 public class Middle<T> implements Sequence<T>, Sequenced<T> {
-    Sequenced<T> item;
+    T item;
     int count;
 
-    public Middle(Sequenced<T> im, int ct) {
+    public Middle(T im, int ct) {
         this.item = im;
         this.count = ct;
     }
 
     /**
-     * seq() is an ITERATOR, a procedure which returns a GENERATOR (a Sequence)
+     * Returns a sequence of the item, repeated ct times
      *
-     * @return A generator which produces elements that will be iterated over
+     * @return Sequence<T> representing sequence of the item many times
      */
-    @Override
     public Sequence<T> seq() {
-        Sequence<T> midSeq = item.seq();
-        //Combine<T>(this.item.seq(), this.item.seq());
+        Sequence<T> midSeq = this;
         for (int i = count - 1; i >= 0; i--) {
             midSeq = new Combine<T>(
                     midSeq,
@@ -33,7 +32,7 @@ public class Middle<T> implements Sequence<T>, Sequenced<T> {
      * @return Type t, current item of the sequence
      */
     public T here() {
-        return item.seq().here();
+        return this.item;
     }
 
     /**
@@ -42,16 +41,19 @@ public class Middle<T> implements Sequence<T>, Sequenced<T> {
      * @return true is the sequence is empty
      */
     public boolean isSomethingThere() {
-        return false;
+        // Should return true because there is no constructor that doesn't take in a value
+        return true;
     }
 
     /**
-     * Returns a sequence containing the next element in the sequence
+     * Returns a sequence representing the next element of a sequence
      *
-     * @return return the next node (not item) in the sequence
+     * @return return this
      */
     public Sequence<T> next() {
-        return null;
+        // TODO: Doesn't matter what this returns— should never be used anyway?
+        // Semantically meaningless to return the next item?
+        throw new RuntimeException( "Cannot return next() of a Middle()" );
     }
 
 }
