@@ -33,6 +33,7 @@ public class Middle<T> implements Sequence<T>, Sequenced<T> {
      */
     public T here() {
         return this.item;
+
     }
 
     /**
@@ -41,8 +42,8 @@ public class Middle<T> implements Sequence<T>, Sequenced<T> {
      * @return true is the sequence is empty
      */
     public boolean isSomethingThere() {
-        // Should return true because there is no constructor that doesn't take in a value
-        return true;
+        // Should return true only if the item's count > 0
+        return this.count > 0;
     }
 
     /**
@@ -51,10 +52,22 @@ public class Middle<T> implements Sequence<T>, Sequenced<T> {
      * @return return this
      */
     public Sequence<T> next() {
+        return this;
         // Doesn't matter what this returns— should never be used anyway?
         // Semantically meaningless to return the next item?
-        throw new RuntimeException( "Cannot return next() of a Middle()" );
+        // throw new RuntimeException( "Cannot return next() of a Middle()" );
     }
 
+    /**
+     * toString for println's
+     *
+     * @return String representing a Middle seq
+     */
+    public String toString() {
+        return "Middle{" +
+                "item=" + item +
+                ", count=" + count +
+                '}';
+    }
 }
 

@@ -15,8 +15,9 @@ public class SequenceEmpty<T> implements Sequence<T> {
      * @return Returns a leaf from the empty sequence
      */
     public T here() {
+        return null;
         //Can throw an exception also-- see Sequence.java
-        throw new RuntimeException("Cannot get the here() of a SequenceEmpty!");
+        // throw new RuntimeException("Cannot get the here() of a SequenceEmpty!");
     }
 
     /**

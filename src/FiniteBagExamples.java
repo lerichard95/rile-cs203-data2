@@ -36,7 +36,7 @@ public class FiniteBagExamples {
         }
     }
 
-    public void testBasic1(Tester t) {
+    public void stestBasic1(Tester t) {
         // A Tree for testing
         FiniteBag<Integer> leaf = new Leaf<Integer>();
         FiniteBag<Integer> t1 = new Tree<Integer>(leaf, 1, 1, leaf);
@@ -169,12 +169,21 @@ public class FiniteBagExamples {
         int randMidBound = randLowBound + Math.abs(rand.nextInt(randInt2));
         int randUpBound = randMidBound + Math.abs(rand.nextInt(randInt2));
 
+        FiniteBag<Integer> leaf = new Leaf<Integer>();
+
         // Make exhaustTrees out of 3 bounds
         FiniteBag<Integer> exhaustTreeN1 = RandTreeGenInt.exhaustTreeN(randLowBound, randMidBound, randInt1);
         FiniteBag<Integer> exhaustTreeN2 = RandTreeGenInt.exhaustTreeN(randMidBound + 1, randUpBound, randInt1);
         FiniteBag<Integer> exhaustTreeN3 = RandTreeGenInt.exhaustTreeN(randLowBound, randUpBound, randInt1);
 
-        //
+        t.checkExpect(exhaustTreeN1.seq().isSomethingThere(), true, "seq() works properly");
+        t.checkExpect(exhaustTreeN1.seq().next().isSomethingThere(), true, "next() returns a value");
+
+        t.checkExpect(leaf.seq().isSomethingThere(), false, "isSomethingThere in leaf - false");
+
+        // fun mutated trees...
+        System.out.println( exhaustTreeN1.diff(exhaustTreeN1).seq().next() );
+        t.checkExpect(exhaustTreeN1.diff(exhaustTreeN1).seq().isSomethingThere(), false, "empty sequence");
 
     }
 

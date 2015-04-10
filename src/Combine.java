@@ -5,10 +5,23 @@ public class Combine<T> implements Sequence<T>, Sequenced<T> {
     Sequence<T> one;
     Sequence<T> two;
 
+    /**
+     * String representation of Combine for println's
+     * @return
+     */
+    public String toString() {
+        return "Combine{" +
+                "one=" + one +
+                ", two=" + two +
+                '}';
+    }
+
     public Combine(Sequence<T> ll, Sequence<T> rr) {
         this.one = ll;
         this.two = rr;
     }
+
+
 
     /**
      * seq() is an ITERATOR, a procedure which returns a GENERATOR (a Sequence)
