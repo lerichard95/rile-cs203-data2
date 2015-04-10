@@ -116,8 +116,11 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      * @return Boolean if the Tree is empty or not
      */
     public boolean isEmptyHuh() {
-        return false;
-        // return this.cardinality() == 0;
+        boolean amIEmpty = false;
+        if (this.count <= 0) {
+            amIEmpty = true;
+        }
+        return amIEmpty && this.left.isEmptyHuh() && this.right.isEmptyHuh();
     }
 
     /**
@@ -323,7 +326,8 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
 
             return new Tree<T>(
                     this.left.inter(u),
-                    this.key, Math.min(this.count, u.multiplicity(this.key)),
+                    this.key,
+                    Math.min(this.count, u.multiplicity(this.key)),
                     this.right.inter(u));
         }
         //  else case: current key is not a member of u,

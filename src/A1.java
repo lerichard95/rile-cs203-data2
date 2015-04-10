@@ -6,36 +6,6 @@ public class A1 {
 
 
         System.out
-                .println("----- TEST: inter (1); set 1-10 with 5-10  -----");
-        FiniteSet exhaustTree5 = treeGen.exhaustTree(5, 10);
-        System.out.println("Should print Tree representing 5-10");
-        System.out.println(exhaustTree4.inter(exhaustTree5));
-
-        System.out
-                .println("----- TEST: inter (2); set 1-10 with 11-15 -----");
-        System.out.println("Should print Leaf()");
-        System.out.println(exhaustTree4.inter(exhaustTree44));
-
-        System.out.println("----- TEST: inter (3); 2 empty sets -----");
-        System.out.println("Should print Leaf()");
-        System.out.println(testLeaf.inter(testLeaf2));
-
-        System.out
-                .println("----- TEST: inter (3); total overlap of FiniteSets -----");
-        System.out.println("Should print either Tree");
-        System.out.println(exhaustTree3.inter(exhaustTree33));
-
-        System.out.println("----- TEST: inter (3); Random testing -----");
-        System.out.println("Should not break???");
-        FiniteSet randTree1 = treeGen.randTree(25, 10);
-        FiniteSet randTree2 = treeGen.randTree(25, 10);
-        for (int i = 0; i <= 100; i++) {
-            randTree1 = treeGen.randTree(10, 20);
-            randTree2 = treeGen.randTree(10, 20);
-            System.out.println(randTree1.inter(randTree2));
-        }
-
-        System.out
                 .println("----- TEST: diff (1); set 1-10 with 5-15 -----");
         System.out.println("Should have Tree containing 11-15");
         FiniteSet exhaustTreeA = treeGen.exhaustTree(1, 10);

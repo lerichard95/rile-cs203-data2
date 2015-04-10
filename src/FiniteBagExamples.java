@@ -27,7 +27,7 @@ public class FiniteBagExamples {
         t.checkExpect(t4.size(), 7, "size() - t4");
 
         // To be used for plenty other random stuff
-        int randInt1 = Math.abs(rand.nextInt(1000));
+        int randInt1 = Math.abs(rand.nextInt(200));
 
         t.checkExpect(
                 RandTreeGenInt.randTree(randInt1, Math.abs(rand.nextInt())).size(),
@@ -35,8 +35,9 @@ public class FiniteBagExamples {
 
         // isEmptyHuh()
         t.checkExpect(leaf.isEmptyHuh(), true, "leaf.isEmptyHuh()");
-        t.checkExpect(RandTreeGenInt.randTree(randInt1, Math.abs(rand.nextInt())).isEmptyHuh(),
-                false, "random tree");
+        t.checkExpect(
+                RandTreeGenInt.randTree(randInt1, Math.abs(rand.nextInt())).isEmptyHuh(),
+                false, "isEmptyHuh() random tree");
 
         // member()
         FiniteBag<Integer> randExhaust1 = RandTreeGenInt.exhaustTree(0, randInt1);
@@ -61,6 +62,12 @@ public class FiniteBagExamples {
         }
         t.checkExpect(exhaustTree2.size(), leaf.size(), "remove() all from exhaustTree2");
 
+        FiniteBag<Integer> exhaustTreeRemoveN = RandTreeGenInt.exhaustTreeN(0, randInt1, randInt1);
+        for (int i = 0; i <= randInt1; i++) {
+            exhaustTreeRemoveN = exhaustTreeRemoveN.removeN(i, randInt1);
+        }
+        t.checkExpect(exhaustTreeRemoveN.isEmptyHuh(), true, "removeN() all from exhaustTreeRemoveN");
+
         t.checkExpect(leaf.removeN(randInt1, randInt1).size(), 0, "removeN() from Leaf");
 
         // union()
@@ -72,10 +79,10 @@ public class FiniteBagExamples {
         FiniteBag<Integer> exhaustBagN = RandTreeGenInt.exhaustTreeN(0, randInt1, randInt1);
 
         // Generate three bounds
-        int randInt2 = Math.abs(rand.nextInt(8));
-        int randLowBound = rand.nextInt(randInt2);
-        int randMidBound = randLowBound + rand.nextInt(randInt2);
-        int randUpBound = randMidBound + rand.nextInt(randInt2);
+        int randInt2 = Math.abs(rand.nextInt(100));
+        int randLowBound = Math.abs(rand.nextInt(randInt1));
+        int randMidBound = randLowBound + Math.abs(rand.nextInt(randInt2));
+        int randUpBound = randMidBound + Math.abs(rand.nextInt(randInt2));
 
         FiniteBag<Integer> exhaustTreeN1 = RandTreeGenInt.exhaustTreeN(randLowBound, randMidBound, randInt1);
         FiniteBag<Integer> exhaustTreeN2 = RandTreeGenInt.exhaustTreeN(randMidBound + 1, randUpBound, randInt1);
@@ -89,7 +96,23 @@ public class FiniteBagExamples {
         // FiniteBag equality property 1
         t.checkExpect(finiteBagEquality(), true, "finiteBagEquality()");
 
-        
+
+        // inter()
+        System.out.println(exhaustTreeN1);
+        System.out.println(exhaustTreeN2);
+        System.out.println(exhaustTreeN1.diff(exhaustTreeN2).toString());
+
+        t.checkExpect(exhaustTreeN1.diff(exhaustTreeN2).isEqual(exhaustTreeN1), true, "inter() no intersection");
+        t.checkExpect(exhaustTreeN2.diff(exhaustTreeN1).isEqual(exhaustTreeN2), true, "inter() no intersection");
+        t.checkExpect(exhaustTreeN2.diff(leaf).isEmptyHuh(), true, "inter() no intersection");
+
+        t.checkExpect(exhaustTreeN3.diff(exhaustTreeN2).isEqual(exhaustTreeN1), true, "inter() exhaustTreeN3 diff exhaustTreeN2");
+        t.checkExpect(exhaustTreeN3.diff(exhaustTreeN1).isEqual(exhaustTreeN2), true, "inter() exhaustTreeN3 diff exhaustTreeN3");
+
+        t.checkExpect(leaf.inter(leaf).equals(leaf), true, "leaf inter leaf (equals version");
+        t.checkExpect(leaf.inter(leaf), leaf, "leaf inter leaf");
+
+        t.checkExpect(exhaustTreeN1.diff(exhaustTreeN1).isEqual(exhaustTreeN1), true, "inter() total overlap");
 
     }
 
