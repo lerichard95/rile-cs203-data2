@@ -297,7 +297,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
     public FiniteBag<T> union(FiniteBag<T> u) {
         // Thanks to Nicholas B for explaining the recursive nature of this
 
-        return u.union(this.left).union(this.right).addN(this.key, u.multiplicity(this.key));
+        return u.union(this.left).union(this.right).addN(this.key, this.count);
         // What happens:
         // Recursive call union of "this" to u,
         // union will "travel" down the left Tree of the root Tree

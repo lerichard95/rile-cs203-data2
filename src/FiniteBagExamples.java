@@ -72,21 +72,25 @@ public class FiniteBagExamples {
         FiniteBag<Integer> exhaustBagN = RandTreeGenInt.exhaustTreeN(0, randInt1, randInt1);
 
         // Generate three bounds
-        int randInt2 = rand.nextInt(8);
+        int randInt2 = Math.abs(rand.nextInt(8));
         int randLowBound = rand.nextInt(randInt2);
         int randMidBound = randLowBound + rand.nextInt(randInt2);
         int randUpBound = randMidBound + rand.nextInt(randInt2);
 
-        FiniteBag<Integer> exhaustTreeN1 = RandTreeGenInt.exhaustTreeN(randLowBound, randMidBound, 0);
-        FiniteBag<Integer> exhaustTreeN2 = RandTreeGenInt.exhaustTreeN(randMidBound + 1, randUpBound, 0);
-        FiniteBag<Integer> exhaustTreeN3 = RandTreeGenInt.exhaustTreeN(randLowBound, randUpBound, 0);
+        FiniteBag<Integer> exhaustTreeN1 = RandTreeGenInt.exhaustTreeN(randLowBound, randMidBound, randInt1);
+        FiniteBag<Integer> exhaustTreeN2 = RandTreeGenInt.exhaustTreeN(randMidBound + 1, randUpBound, randInt1);
+        FiniteBag<Integer> exhaustTreeN3 = RandTreeGenInt.exhaustTreeN(randLowBound, randUpBound, randInt1);
         FiniteBag<Integer> unionTree1 = exhaustTreeN1.union(exhaustTreeN2);
 
+        // TODO: This union test is broken? Or union itself is broken
         t.checkExpect(unionTree1.isEqual(exhaustTreeN3), true, "union() for exhaust tree");
-
         t.checkExpect(leaf.union(leaf), leaf, "union() leaf with leaf");
 
+        // FiniteBag equality property 1
         t.checkExpect(finiteBagEquality(), true, "finiteBagEquality()");
+
+        
+
     }
 
 

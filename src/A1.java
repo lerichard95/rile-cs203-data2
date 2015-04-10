@@ -135,20 +135,5 @@ public class A1 {
         }
     }
 
-    // Tests by subset rule
-    public static boolean testEqual() {
-        TreeGen treeGen = new TreeGen();
-        FiniteSet a = treeGen.randTree(100, 100);
-        FiniteSet b = a;
-
-        if (a.subset(b) && b.subset(a)) {
-            return true;
-        } else {
-            throw new RuntimeException("ERROR!");
-        }
-
-
-        // end of main
-    }
 
 }*/

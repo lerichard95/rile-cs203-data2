@@ -99,6 +99,7 @@ Leaf
 Tree rotation research 
 http://en.wikipedia.org/wiki/Tree_rotation
 
+
 [ ] Add a height field
 [ ] Decide when the left or right rotation should occur
 [ ] Write the left rotation
@@ -118,8 +119,7 @@ Are these needed for rotations?
 [ ] Migrate tests from data1 to data2
 
 ###Testing tools
-[ ] Retool the random tree generation to work with generics...
-[ ] Rewrite tests to work with generics/AVL trees...
+
 
 ###Leaf
 Functions of Leaf to test:
