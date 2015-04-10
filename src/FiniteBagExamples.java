@@ -112,12 +112,12 @@ public class FiniteBagExamples {
         int randMidBound = randLowBound + Math.abs(rand.nextInt(randInt2));
         int randUpBound = randMidBound + Math.abs(rand.nextInt(randInt2));
 
+        // Make exhaustTrees out of 3 bounds
         FiniteBag<Integer> exhaustTreeN1 = RandTreeGenInt.exhaustTreeN(randLowBound, randMidBound, randInt1);
         FiniteBag<Integer> exhaustTreeN2 = RandTreeGenInt.exhaustTreeN(randMidBound + 1, randUpBound, randInt1);
         FiniteBag<Integer> exhaustTreeN3 = RandTreeGenInt.exhaustTreeN(randLowBound, randUpBound, randInt1);
         FiniteBag<Integer> unionTree1 = exhaustTreeN1.union(exhaustTreeN2);
 
-        // TODO: This union test is broken? Or union itself is broken
         t.checkExpect(unionTree1.isEqual(exhaustTreeN3), true, "union() for exhaust tree");
         t.checkExpect(leaf.union(leaf), leaf, "union() leaf with leaf");
 
@@ -156,6 +156,25 @@ public class FiniteBagExamples {
         t.checkExpect(memberProp1(), true, "memberProp1()");
         // member (property2)
         t.checkExpect(memberProp2(), true, "memberProp2()");
+
+    }
+
+    public void testSequences(Tester t) {
+        // To be used for plenty other random stuff
+        int randInt1 = Math.abs(rand.nextInt(200));
+
+        // Generate three bounds
+        int randInt2 = Math.abs(rand.nextInt(100));
+        int randLowBound = Math.abs(rand.nextInt(randInt1));
+        int randMidBound = randLowBound + Math.abs(rand.nextInt(randInt2));
+        int randUpBound = randMidBound + Math.abs(rand.nextInt(randInt2));
+
+        // Make exhaustTrees out of 3 bounds
+        FiniteBag<Integer> exhaustTreeN1 = RandTreeGenInt.exhaustTreeN(randLowBound, randMidBound, randInt1);
+        FiniteBag<Integer> exhaustTreeN2 = RandTreeGenInt.exhaustTreeN(randMidBound + 1, randUpBound, randInt1);
+        FiniteBag<Integer> exhaustTreeN3 = RandTreeGenInt.exhaustTreeN(randLowBound, randUpBound, randInt1);
+
+        //
 
     }
 

@@ -15,7 +15,6 @@ public interface FiniteBag<T extends Comparable<T>> extends Sequenced<T> {
      * Increase the multiplicity of item in the FiniteBag by 1
      *
      * @param item Item whose multiplicity will be incremented by 1
-     * @param n    Multiplicity to be incremented by 1
      * @return A new instance of FiniteBag with the multiplicity of item incremented by 1
      */
     FiniteBag<T> add(T item);
@@ -75,7 +74,7 @@ public interface FiniteBag<T extends Comparable<T>> extends Sequenced<T> {
 
     boolean isSubset(FiniteBag<T> b);
 
-    public FiniteBag<T> diff(FiniteBag<T> b);
+    FiniteBag<T> diff(FiniteBag<T> b);
 
     boolean isEqual(FiniteBag<T> b);
 

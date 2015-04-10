@@ -29,7 +29,7 @@ public class RandTreeGenInt {
      *
      * @param start lower bound of element #
      * @param end   upper bound of element #
-     * @return
+     * @return FiniteBag where all ints from start to end are represented with multiplicity 1
      */
     public static FiniteBag<Integer> exhaustTree(int start, int end) {
         tree = new Leaf<Integer>();

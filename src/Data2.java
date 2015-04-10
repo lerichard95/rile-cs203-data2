@@ -2,9 +2,7 @@
  * @author Richard Le
  */
 
-import tester.*;
-
-import java.util.Random;
+import tester.Tester;
 
 /**
  * This is the main method that will invoke the tests.
@@ -14,8 +12,6 @@ public class Data2 {
         //  Using the tester library
         FiniteBagExamples FiniteBagExamples = new FiniteBagExamples();
         Tester.run(FiniteBagExamples);
-
-        System.out.println("data2 - Run configuration is correct! Ready to start!");
     }
 
 

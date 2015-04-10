@@ -1,7 +1,5 @@
 /**
  * Leaf represents an empty node
- *
- * @param <T> Generic type for the Leaf
  */
 public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
 

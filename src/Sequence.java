@@ -7,21 +7,21 @@ public interface Sequence<E> {
      *
      * @return Type t, current item of the sequence
      */
-    public E here();
+    E here();
 
     /**
      * Determine if the sequence is empty
      *
      * @return true is the sequence is empty
      */
-    public boolean isSomethingThere();
+    boolean isSomethingThere();
 
     /**
      * Returns a sequence containing the next element in the sequence
      *
      * @return return the next node (not item) in the sequence
      */
-    public Sequence<E> next();
+    Sequence<E> next();
     // If isSomethingThere returns false, then next() can return anything and
     // here() can return anything
 

@@ -31,7 +31,6 @@ public class Combine<T> implements Sequence<T>, Sequenced<T> {
         } else {
             return this.two.here();
         }
-
     }
 
     /**

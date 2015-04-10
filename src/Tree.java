@@ -1,7 +1,6 @@
 /**
  * Tree is a concrete implementation of FiniteBag— this will be the AVL tree...
  *
- * @param <T> A generic type that must extend Comparable<T>
  */
 
 public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> {
@@ -164,7 +163,6 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
 
     /**
      * @param item The generic item to be placed addCount times into the FiniteBag
-     * @param n    The multiplicity of item to be added to the multiset
      * @return a new FiniteBag with item added, and appropriate value changed
      */
     public FiniteBag<T> add(T item) {
@@ -202,12 +200,12 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
         // return a new root Tree, making add() a pure implementation.
         //
 
-        //TODO: Comparison less than
+        // Comparison less than
         if (elt.compareTo(this.key) < 0) {
             return new Tree<T>(left.addN(elt, n), key, this.count, right);
         }
 
-        //TODO: Comparison greater than
+        // Comparison greater than
         // elt > this.key
         else {
             return new Tree<T>(left, key, this.count, right.addN(elt, n));
@@ -226,8 +224,8 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
     /**
      * Removes an element from the Tree— by setting the multiplicity of an element to to 0
      *
-     * @param elt
-     * @return FiniteBag<T> where the element elt was changed
+     * @param elt T to be removed from the tree— node will stay but multiplicity is reset.
+     * @return FiniteBag where the element elt was changed
      */
     public FiniteBag<T> remove(T elt) {
         // Thanks to Atticus K for this implementation

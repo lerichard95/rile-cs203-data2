@@ -14,7 +14,7 @@ public class Middle<T> implements Sequence<T>, Sequenced<T> {
     /**
      * Returns a sequence of the item, repeated ct times
      *
-     * @return Sequence<T> representing sequence of the item many times
+     * @return Sequence representing sequence of the item many times
      */
     public Sequence<T> seq() {
         Sequence<T> midSeq = this;
@@ -51,7 +51,7 @@ public class Middle<T> implements Sequence<T>, Sequenced<T> {
      * @return return this
      */
     public Sequence<T> next() {
-        // TODO: Doesn't matter what this returns— should never be used anyway?
+        // Doesn't matter what this returns— should never be used anyway?
         // Semantically meaningless to return the next item?
         throw new RuntimeException( "Cannot return next() of a Middle()" );
     }
