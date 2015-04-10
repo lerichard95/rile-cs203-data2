@@ -6,6 +6,7 @@ public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
     T key = null;
     int count = 0;
     FiniteBag<T> right = this;
+    int height = 0;
 
     /* Iteration abstraction functions */
 
@@ -82,7 +83,7 @@ public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
     public FiniteBag<T> add(T elt) {
         //Return a new Tree with empty left/rights
         //with the added key elt
-        return new Tree<T>(new Leaf<T>(), elt, 1, new Leaf<T>());
+        return new Tree<T>(new Leaf<T>(), elt, 1, new Leaf<T>(), 1);
     }
 
     /**
@@ -91,7 +92,7 @@ public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
      * @return a new Tree with elt for key, and n for count
      */
     public FiniteBag<T> addN(T item, int n) {
-        return new Tree<T>(new Leaf<T>(), item, n, new Leaf<T>());
+        return new Tree<T>(new Leaf<T>(), item, n, new Leaf<T>(), 1);
     }
 
     /**
@@ -216,5 +217,12 @@ public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
         return count;
     }
 
-
+    /**
+     * Return the height 0
+     *
+     * @return int 0
+     */
+    public int getHeight() {
+        return this.height;
+    }
 }

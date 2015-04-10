@@ -39,13 +39,13 @@ public class FiniteBagExamples {
     public void testBasic1(Tester t) {
         // A Tree for testing
         FiniteBag<Integer> leaf = new Leaf<Integer>();
-        FiniteBag<Integer> t1 = new Tree<Integer>(leaf, 1, 1, leaf);
-        FiniteBag<Integer> t3 = new Tree<Integer>(leaf, 3, 1, leaf);
-        FiniteBag<Integer> t5 = new Tree<Integer>(leaf, 5, 1, leaf);
-        FiniteBag<Integer> t7 = new Tree<Integer>(leaf, 7, 1, leaf);
-        FiniteBag<Integer> t2 = new Tree<Integer>(t1, 2, 1, t3);
-        FiniteBag<Integer> t6 = new Tree<Integer>(t5, 6, 1, t7);
-        FiniteBag<Integer> t4 = new Tree<Integer>(t2, 4, 1, t6);
+        FiniteBag<Integer> t1 = new Tree<Integer>(leaf, 1, 1, leaf, 1);
+        FiniteBag<Integer> t3 = new Tree<Integer>(leaf, 3, 1, leaf, 1);
+        FiniteBag<Integer> t5 = new Tree<Integer>(leaf, 5, 1, leaf, 1);
+        FiniteBag<Integer> t7 = new Tree<Integer>(leaf, 7, 1, leaf, 1);
+        FiniteBag<Integer> t2 = new Tree<Integer>(t1, 2, 1, t3, 1);
+        FiniteBag<Integer> t6 = new Tree<Integer>(t5, 6, 1, t7, 1);
+        FiniteBag<Integer> t4 = new Tree<Integer>(t2, 4, 1, t6, 1);
 
         // Test: empty()
         t.checkExpect(leaf.isEmptyHuh(), true, "empty()");
