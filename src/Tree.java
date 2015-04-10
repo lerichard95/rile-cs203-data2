@@ -10,7 +10,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
     T key;
     int count;
     FiniteBag<T> right;
-    int height = 1;
+
 
     /**
      * Constructor will create a new instance of Tree
@@ -19,28 +19,14 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      * @param k Key: generic item being held
      * @param c Count, represents cardinality of k— number of instances of k that are held
      * @param r FiniteBag to be stored on the right side
-     * @param h height of the tree
      */
-    Tree(FiniteBag<T> l, T k, int c, FiniteBag<T> r, int h) {
+    Tree(FiniteBag<T> l, T k, int c, FiniteBag<T> r) {
         // assign inputs of a new instance
         // to the instance variables specified above
         this.left = l;
         this.key = k;
         this.count = c;
         this.right = r;
-        // "calculate the height"
-        Tree<T> castLeft = (Tree<T>) this.left;
-        Tree<T> castRight = (Tree<T>) this.left;
-        this.height = Math.max(castLeft.height, castRight.height) + this.height;
-    }
-
-    /**
-     * Get the height of this Tree
-     *
-     * @return int height
-     */
-    public int getHeight() {
-        return this.height;
     }
 
     /**
@@ -194,7 +180,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
         // key == elt
         // Just return the Tree
         if ((this.key.compareTo(elt) == 0)) {
-            return new Tree<T>(this.left, this.key, this.count + n, this.right, this.height);
+            return new Tree<T>(this.left, this.key, this.count + n, this.right);
         }
 
         // elt < key
@@ -215,13 +201,13 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
 
         // Comparison less than
         if (elt.compareTo(this.key) < 0) {
-            return new Tree<T>(left.addN(elt, n), key, this.count, right, this.height);
+            return new Tree<T>(left.addN(elt, n), key, this.count, right);
         }
 
         // Comparison greater than
         // elt > this.key
         else {
-            return new Tree<T>(left, key, this.count, right.addN(elt, n), this.height);
+            return new Tree<T>(left, key, this.count, right.addN(elt, n));
         }
     }
 
@@ -241,16 +227,16 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
         if (elt.compareTo(this.key) < 0) {
             // Returning a new Tree allows each recursive call
             // to "rebuild" the tree
-            return new Tree<T>(this.left.remove(elt), this.key, this.count, this.right, this.height);
+            return new Tree<T>(this.left.remove(elt), this.key, this.count, this.right);
         }
         // Enter the right tree
         if (elt.compareTo(this.key) > 0) {
-            return new Tree<T>(this.left, this.key, this.count, this.right.remove(elt), this.height);
+            return new Tree<T>(this.left, this.key, this.count, this.right.remove(elt));
         } else {
             return new Tree<T>(this.left, this.key,
                     // Reset the multiplicity to 0
                     0,
-                    this.right, this.height - 1);
+                    this.right);
             // Combine the left and right trees but ignore the current key
             //return this.left.union(this.right);
         }
@@ -270,11 +256,11 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
         if (item.compareTo(this.key) < 0) {
             // Returning a new Tree allows each recursive call
             // to "rebuild" the tree
-            return new Tree<T>(this.left.remove(item), this.key, this.count, this.right, 1);
+            return new Tree<T>(this.left.remove(item), this.key, this.count, this.right);
         }
         // Enter the right tree
         if (item.compareTo(this.key) > 0) {
-            return new Tree<T>(this.left, this.key, this.count, this.right.remove(item), 1);
+            return new Tree<T>(this.left, this.key, this.count, this.right.remove(item));
         }
         // Assuming that compareTo will be equal - optimization: don't have to run Compare
         // Only do this if count - n is non-negative
@@ -282,14 +268,14 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
             return new Tree<T>(this.left, this.key,
                     // Subtract n from count
                     this.count - n,
-                    this.right, 1);
+                    this.right);
         }
         // Return the node with multiplicity of 0 if n is bigger than countv
         else {
             return new Tree<T>(this.left, this.key,
                     // Reset the multiplicity to 0
                     0,
-                    this.right, 1);
+                    this.right);
             // Combine the left and right trees but ignore the current key
             //return this.left.union(this.right);
         }
@@ -333,7 +319,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
                     this.left.inter(u),
                     this.key,
                     Math.min(this.count, u.multiplicity(this.key)),
-                    this.right.inter(u), 1);
+                    this.right.inter(u));
         }
         //  else case: current key is not a member of u,
         //  return the union of the left child with right child,
@@ -383,17 +369,9 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
         return this.isSubset(u) && u.isSubset(this);
     }
 
-    /**
-     * Determines if current Tree node is AVL balanced
-     *
-     * @return True is it is balanced
-     */
     public boolean amIAVLBalanced() {
-        Tree<T> castLeft = (Tree<T>) this.left;
-        Tree<T> castRight = (Tree<T>) this.left;
-
-        int min = Math.min(castLeft.height, castRight.height);
-        int max = Math.max(castLeft.height, castRight.height);
+        int min = Math.min(this.left.height, this.right.height);
+        int max = Math.max(this.left.height, this.right.height);
         return (min <= max) && (max <= min);
     }
 
@@ -404,16 +382,15 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      */
 
     public FiniteBag<T> rotateRight() {
-        Tree<T> castLeft = (Tree<T>) this.left;
-        Tree<T> castRight = (Tree<T>) this.left;
+
         FiniteBag<T> bottomRight =
-                new Tree<T>(castLeft.getRight(), this.key, this.count, this.right, this.height);
+                new Tree<T>(this.left.getRight(), this.key, this.count, this.right);
         // TODO: What if the right node is a Leaf?
         if (this.right.equals(new Leaf<T>())) {
             bottomRight = new Leaf<T>();
         }
 
-        return new Tree<T>(castLeft.getLeft(), castLeft.getKey(), castLeft.getCount(), bottomRight, this.height);
+        return new Tree<T>(this.left.getLeft(), this.left.getKey(), this.left.getCount(), bottomRight);
     }
 
 
@@ -423,13 +400,9 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      * @return a new FiniteBag, rotated left
      */
     public FiniteBag<T> rotateLeft() {
-
-        Tree<T> castLeft = (Tree<T>) this.left;
-        Tree<T> castRight = (Tree<T>) this.left;
-
         FiniteBag<T> newLeft =
-                new Tree<T>(this.left, this.key, this.count, castRight.getLeft(), this.height);
-        return new Tree<T>(newLeft, castRight.getKey(), castRight.getCount(), castRight.getRight(), this.height);
+                new Tree<T>(this.left, this.key, this.count, this.right.getLeft());
+        return new Tree<T>(newLeft, this.right.getKey(), this.right.getCount(), this.right.getRight());
     }
 
     /**
