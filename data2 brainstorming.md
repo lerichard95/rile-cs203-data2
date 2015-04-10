@@ -126,8 +126,6 @@ Are these needed for rotations?
 
 ###Leaf
 Functions of Leaf to test:
-[ ] Leaf 
-    - don't test constructor
 [x] empty
 [ ] toString
 [x] size
@@ -204,10 +202,6 @@ These two pieces of the project will be weighted equally.
   - Describe the uses
   - Explain properties
   - Performance characteristics (linear, log, etc?)
-
-
-
-
 
 DEPRECATED
 Sequence is just a functional version of Iterable. 

@@ -8,6 +8,34 @@ import java.util.Random;
 public class FiniteBagExamples {
     public static Random rand = new Random();
 
+    public static boolean memberProp1() {
+        FiniteBag<Integer> t = RandTreeGenInt.exhaustTree(1, 100);
+        int x = 1 + Math.abs(rand.nextInt(99));
+        int y = 1 + Math.abs(rand.nextInt(99));
+        if (t.add(x).member(y) && (x == y) || (t.member(y))) {
+            return true;
+        } else {
+            throw new RuntimeException("x: " + x + ", y: " + y + ", t: "
+                    + t.toString());
+        }
+    }
+
+    public static boolean memberProp2() {
+        FiniteBag<Integer> s = RandTreeGenInt.randTree(50, 100);
+        FiniteBag<Integer> sp = RandTreeGenInt.randTree(50, 100);
+        int x = 1 + Math.abs(rand.nextInt(99));
+        // Ensure that x is a member of s and sp
+        if (!s.member(x) && !sp.member(x)) {
+            x = 1 + Math.abs(rand.nextInt(99));
+        }
+
+        if (s.union(sp).member(x)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void testBasic1(Tester t) {
         // A Tree for testing
         FiniteBag<Integer> leaf = new Leaf<Integer>();
@@ -41,7 +69,7 @@ public class FiniteBagExamples {
 
         // member()
         FiniteBag<Integer> randExhaust1 = RandTreeGenInt.exhaustTree(0, randInt1);
-        int randMember = rand.nextInt(randInt1);
+        int randMember = Math.abs(rand.nextInt(randInt1));
         t.checkExpect(randExhaust1.member(randMember), true, "randMember");
         t.checkExpect(leaf.member(randMember), false, "randMember");
 
@@ -98,24 +126,38 @@ public class FiniteBagExamples {
 
 
         // inter()
-        System.out.println(exhaustTreeN1);
-        System.out.println(exhaustTreeN2);
-        System.out.println(exhaustTreeN1.diff(exhaustTreeN2).toString());
+        t.checkExpect(exhaustTreeN1.inter(exhaustTreeN2).isEqual(leaf), true, "inter() no intersection - N1 N2");
+        t.checkExpect(exhaustTreeN2.inter(leaf).isEqual(leaf), true, "inter() no intersection");
 
-        t.checkExpect(exhaustTreeN1.diff(exhaustTreeN2).isEqual(exhaustTreeN1), true, "inter() no intersection");
-        t.checkExpect(exhaustTreeN2.diff(exhaustTreeN1).isEqual(exhaustTreeN2), true, "inter() no intersection");
-        t.checkExpect(exhaustTreeN2.diff(leaf).isEmptyHuh(), true, "inter() no intersection");
+        t.checkExpect(exhaustTreeN3.inter(exhaustTreeN2).isEqual(exhaustTreeN2), true, "inter() exhaustTreeN3 inter exhaustTreeN2");
+        t.checkExpect(exhaustTreeN3.inter(exhaustTreeN1).isEqual(exhaustTreeN1), true, "inter() exhaustTreeN3 inter exhaustTreeN3");
 
-        t.checkExpect(exhaustTreeN3.diff(exhaustTreeN2).isEqual(exhaustTreeN1), true, "inter() exhaustTreeN3 diff exhaustTreeN2");
-        t.checkExpect(exhaustTreeN3.diff(exhaustTreeN1).isEqual(exhaustTreeN2), true, "inter() exhaustTreeN3 diff exhaustTreeN3");
-
-        t.checkExpect(leaf.inter(leaf).equals(leaf), true, "leaf inter leaf (equals version");
+        //t.checkExpect(exhaustTreeN1.inter(leaf).isEqual(exhaustTreeN1), true, "inter() ");
+        t.checkExpect(leaf.inter(leaf).isEqual(leaf), true, "leaf inter leaf (equals version");
         t.checkExpect(leaf.inter(leaf), leaf, "leaf inter leaf");
 
-        t.checkExpect(exhaustTreeN1.diff(exhaustTreeN1).isEqual(exhaustTreeN1), true, "inter() total overlap");
+        t.checkExpect(exhaustTreeN1.inter(exhaustTreeN1).isEqual(exhaustTreeN1), true, "inter() total overlap");
+
+
+        // diff()
+
+        t.checkExpect(exhaustTreeN3.inter(exhaustTreeN1).isEqual(exhaustTreeN1), true, "diff() - N3 - N1 = N1");
+
+        t.checkExpect(leaf.diff(exhaustTreeN1).isEqual(exhaustTreeN1), true, "diff(): leaf - N1 = N1");
+        t.checkExpect(exhaustTreeN1.diff(exhaustTreeN2).isEqual(exhaustTreeN2), true, "diff(): N1 - N2 = N2");
+
+        // union()
+        FiniteBag<Integer> exhaustTreeN1u1 = RandTreeGenInt.exhaustTreeN(randLowBound, randMidBound, randInt1 * 2);
+        t.checkExpect(exhaustTreeN1.union(exhaustTreeN2).isEqual(exhaustTreeN3), true, "union(): N1 + N2 = N3");
+        t.checkExpect(leaf.union(exhaustTreeN2).isEqual(exhaustTreeN2), true, "union(): leaf + N2 = N2");
+        t.checkExpect(exhaustTreeN1.union(exhaustTreeN1).isEqual(exhaustTreeN1u1), true, "union(): N1 + N1 = N1u1");
+
+        // member (property1)
+        t.checkExpect(memberProp1(), true, "memberProp1()");
+        // member (property2)
+        t.checkExpect(memberProp2(), true, "memberProp2()");
 
     }
-
 
     public void testLeaf(Tester t) {
         Leaf<Integer> emptLeaf = new Leaf<Integer>();
@@ -134,6 +176,5 @@ public class FiniteBagExamples {
         FiniteBag<Integer> b = a;
         return (a.isSubset(b) && b.isSubset(a));
     }
-
 
 }
