@@ -36,7 +36,7 @@ public class FiniteBagExamples {
         }
     }
 
-    public void stestBasic1(Tester t) {
+    public void testBasic1(Tester t) {
         // A Tree for testing
         FiniteBag<Integer> leaf = new Leaf<Integer>();
         FiniteBag<Integer> t1 = new Tree<Integer>(leaf, 1, 1, leaf);
@@ -68,16 +68,16 @@ public class FiniteBagExamples {
                 false, "isEmptyHuh() random tree");
 
         // member()
-        FiniteBag<Integer> randExhaust1 = RandTreeGenInt.exhaustTree(0, randInt1);
+        FiniteBag<Integer> randExhaust1 = RandTreeGenInt.exhaustTreeN(0, randInt1, randInt1);
         int randMember = Math.abs(rand.nextInt(randInt1));
         t.checkExpect(randExhaust1.member(randMember), true, "randMember");
         t.checkExpect(leaf.member(randMember), false, "randMember");
 
         // add()
         // Adding existing elements to Tree
-        int randIntWithinRI1 = rand.nextInt(randInt1);
+        int randIntWithinRI1 = Math.abs(rand.nextInt(randInt1));
         t.checkExpect(randExhaust1.add(randIntWithinRI1).multiplicity(randIntWithinRI1),
-                2, "randExhaust1.add(1)");
+                randInt1 + 1 , "randExhaust1.add(1)");
 
         // addN()
         t.checkExpect(leaf.addN(randIntWithinRI1, randInt1).multiplicity(randIntWithinRI1),
@@ -90,6 +90,7 @@ public class FiniteBagExamples {
         }
         t.checkExpect(exhaustTree2.size(), leaf.size(), "remove() all from exhaustTree2");
 
+        // removeN()
         FiniteBag<Integer> exhaustTreeRemoveN = RandTreeGenInt.exhaustTreeN(0, randInt1, randInt1);
         for (int i = 0; i <= randInt1; i++) {
             exhaustTreeRemoveN = exhaustTreeRemoveN.removeN(i, randInt1);
@@ -102,8 +103,6 @@ public class FiniteBagExamples {
         // Union of empty set and non-empty set
         t.checkExpect(leaf.union(randExhaust1), randExhaust1, "leaf.union(randExhaust1)");
 
-        // union()
-        System.out.println("Should print Tree representing 1-10");
         FiniteBag<Integer> exhaustBagN = RandTreeGenInt.exhaustTreeN(0, randInt1, randInt1);
 
         // Generate three bounds
@@ -113,6 +112,7 @@ public class FiniteBagExamples {
         int randUpBound = randMidBound + Math.abs(rand.nextInt(randInt2));
 
         // Make exhaustTrees out of 3 bounds
+        System.out.println("Please standby: random trees being generated— may take a while");
         FiniteBag<Integer> exhaustTreeN1 = RandTreeGenInt.exhaustTreeN(randLowBound, randMidBound, randInt1);
         FiniteBag<Integer> exhaustTreeN2 = RandTreeGenInt.exhaustTreeN(randMidBound + 1, randUpBound, randInt1);
         FiniteBag<Integer> exhaustTreeN3 = RandTreeGenInt.exhaustTreeN(randLowBound, randUpBound, randInt1);
@@ -124,7 +124,6 @@ public class FiniteBagExamples {
         // FiniteBag equality property 1
         t.checkExpect(finiteBagEquality(), true, "finiteBagEquality()");
 
-
         // inter()
         t.checkExpect(exhaustTreeN1.inter(exhaustTreeN2).isEqual(leaf), true, "inter() no intersection - N1 N2");
         t.checkExpect(exhaustTreeN2.inter(leaf).isEqual(leaf), true, "inter() no intersection");
@@ -132,7 +131,7 @@ public class FiniteBagExamples {
         t.checkExpect(exhaustTreeN3.inter(exhaustTreeN2).isEqual(exhaustTreeN2), true, "inter() exhaustTreeN3 inter exhaustTreeN2");
         t.checkExpect(exhaustTreeN3.inter(exhaustTreeN1).isEqual(exhaustTreeN1), true, "inter() exhaustTreeN3 inter exhaustTreeN3");
 
-        //t.checkExpect(exhaustTreeN1.inter(leaf).isEqual(exhaustTreeN1), true, "inter() ");
+        t.checkExpect(exhaustTreeN1.inter(leaf).isEqual(leaf), true, "inter(): N1 - leaf = leaf");
         t.checkExpect(leaf.inter(leaf).isEqual(leaf), true, "leaf inter leaf (equals version");
         t.checkExpect(leaf.inter(leaf), leaf, "leaf inter leaf");
 
@@ -176,14 +175,16 @@ public class FiniteBagExamples {
         FiniteBag<Integer> exhaustTreeN2 = RandTreeGenInt.exhaustTreeN(randMidBound + 1, randUpBound, randInt1);
         FiniteBag<Integer> exhaustTreeN3 = RandTreeGenInt.exhaustTreeN(randLowBound, randUpBound, randInt1);
 
-        t.checkExpect(exhaustTreeN1.seq().isSomethingThere(), true, "seq() works properly");
-        t.checkExpect(exhaustTreeN1.seq().next().isSomethingThere(), true, "next() returns a value");
+        t.checkExpect(exhaustTreeN1.seq().isSomethingThere(), true, "seq() returns a FiniteBag");
+        t.checkExpect(exhaustTreeN1.seq().next().isSomethingThere(), true, "next() boolean returns a FiniteBag");
+        t.checkExpect(leaf.seq().isSomethingThere(), false, "isSomethingThere() in leaf - false");
 
-        t.checkExpect(leaf.seq().isSomethingThere(), false, "isSomethingThere in leaf - false");
+        t.checkExpect(exhaustTreeN1.diff(exhaustTreeN1).seq().next().isSomethingThere(), false,
+                "N1 - N1 - next().isSomethingThere() returns false");
 
-        // fun mutated trees...
-        System.out.println( exhaustTreeN1.diff(exhaustTreeN1).seq().next() );
-        t.checkExpect(exhaustTreeN1.diff(exhaustTreeN1).seq().isSomethingThere(), false, "empty sequence");
+        t.checkExpect(exhaustTreeN1.diff(exhaustTreeN1).seq().next().here(), null,
+                "N1 - N1 - next().here() returns 0");
+
 
     }
 

@@ -81,4 +81,35 @@ public interface FiniteBag<T extends Comparable<T>> extends Sequenced<T> {
     // TODO: Don't do sum— multiset sum will be done in place of union.
     //FiniteBag<T> sum(FiniteBag<T> b);
 
+    // Getters
+
+    /**
+     * Get the left-
+     *
+     * @return FiniteBag left
+     */
+    FiniteBag<T> getLeft();
+
+    /**
+     * Get the right tree
+     *
+     * @return FiniteBag right
+     */
+    FiniteBag<T> getRight();
+
+    /**
+     * Get the key
+     *
+     * @return key
+     */
+    T getKey();
+
+    /**
+     * Get the count— returns 0 because there is no key inside leaf
+     *
+     * @return key
+     */
+    int getCount();
+
+
 }

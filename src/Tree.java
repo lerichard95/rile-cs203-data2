@@ -1,6 +1,5 @@
 /**
  * Tree is a concrete implementation of FiniteBag— this will be the AVL tree...
- *
  */
 
 public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> {
@@ -212,14 +211,8 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
         }
     }
 
-    /**
-     * Removes elt from the Tree
-     *
-     * @param elt item— irrelevant and not used
-     * @return A new Leaf
-     */
 
-    // TODO: AVL version of remove, remember to use Comparable functions
+    // TODO: AVL version of add
 
     /**
      * Removes an element from the Tree— by setting the multiplicity of an element to to 0
@@ -376,38 +369,77 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
         return this.isSubset(u) && u.isSubset(this);
     }
 
-/*
-    */
-/**
- * Perform a right rotation on this tree branch
- *
- * @return a new FiniteBag, rotated right
- *//*
+    public boolean amIAVLBalanced() {
+        int min = Math.min(this.left.height, this.right.height);
+        int max = Math.max(this.left.height, this.right.height);
+        return (min <= max) && (max <= min);
+    }
+
+    /**
+     * Perform a right rotation on this tree branch
+     *
+     * @return a new FiniteBag, rotated right
+     */
 
     public FiniteBag<T> rotateRight() {
+
         FiniteBag<T> bottomRight =
-                new Tree<T>(this.left.right, this.key, this.count, this.right);
+                new Tree<T>(this.left.getRight(), this.key, this.count, this.right);
         // TODO: What if the right node is a Leaf?
         if (this.right.equals(new Leaf<T>())) {
             bottomRight = new Leaf<T>();
         }
 
-        return new Tree<T>(this.left.left, this.left.key, this.left.count, bottomRight);
+        return new Tree<T>(this.left.getLeft(), this.left.getKey(), this.left.getCount(), bottomRight);
     }
 
-    */
-/**
- * Perform a left rotation on this tree branch
- *
- * @return a new FiniteBag, rotated left
- *//*
 
+    /**
+     * Perform a left rotation on this tree branch
+     *
+     * @return a new FiniteBag, rotated left
+     */
     public FiniteBag<T> rotateLeft() {
         FiniteBag<T> newLeft =
-                new Tree<T>(this.left, this.key, this.count, this.right.left);
-        return new Tree<T>(newLeft, this.right.key, this.right.count, this.right.right);
+                new Tree<T>(this.left, this.key, this.count, this.right.getLeft());
+        return new Tree<T>(newLeft, this.right.getKey(), this.right.getCount(), this.right.getRight());
     }
-*/
+
+    /**
+     * Get the left-
+     *
+     * @return FiniteBag left
+     */
+    public FiniteBag<T> getLeft() {
+        return this.left;
+    }
+
+    /**
+     * Get the right tree
+     *
+     * @return FiniteBag right
+     */
+    public FiniteBag<T> getRight() {
+        return this.right;
+    }
+
+    /**
+     * Get the key
+     *
+     * @return key
+     */
+    public T getKey() {
+        return this.key;
+    }
+
+    /**
+     * Get the count— returns 0 because there is no key inside leaf
+     *
+     * @return key
+     */
+    public int getCount() {
+        return this.count;
+    }
 
 
 }

@@ -2,7 +2,10 @@
  * Leaf represents an empty node
  */
 public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
-
+    FiniteBag<T> left = this;
+    T key = null;
+    int count = 0;
+    FiniteBag<T> right = this;
 
     /* Iteration abstraction functions */
 
@@ -175,6 +178,42 @@ public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
      */
     public int multiplicity(T item) {
         return 0;
+    }
+
+    /**
+     * Get the left-
+     *
+     * @return Leaf because leaves have no real children
+     */
+    public FiniteBag<T> getLeft() {
+        return left;
+    }
+
+    /**
+     * Get the right tree
+     *
+     * @return Leaf because leaves have no real children
+     */
+    public FiniteBag<T> getRight() {
+        return this.right;
+    }
+
+    /**
+     * Get the key— returns null because there is no key inside leaf
+     *
+     * @return key
+     */
+    public T getKey() {
+        return null;
+    }
+
+    /**
+     * Get the count— returns 0 because there is no key inside leaf
+     *
+     * @return key
+     */
+    public int getCount() {
+        return count;
     }
 
 

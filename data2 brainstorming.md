@@ -116,10 +116,10 @@ Are these needed for rotations?
 ===
 
 ###Functions to fix
-[ ] isEmptyHuh() for Tree...
+
 
 ###Migration
-[ ] Migrate tests from data1 to data2
+[x] Migrate tests from data1 to data2
 
 ###Testing tools
 
@@ -142,8 +142,8 @@ Functions of Leaf to test:
 [ ] multiplicity
 
 ##Writing implementations
-[ ] Comment out unused functions
-[ ] Test-first programming— write test first!
+[x] Comment out unused functions
+[x] Test-first programming— write test first!
 
 ===
 
@@ -195,13 +195,16 @@ These two pieces of the project will be weighted equally.
 
 [ ] Source code /src
 [ ] Console transcript
+
 [ ] Essay
   - explain approach to implementing and verifying the system
+  - 
 [ ] API/library manual
   - Document the API's functions
   - Describe the uses
   - Explain properties
   - Performance characteristics (linear, log, etc?)
+
 
 DEPRECATED
 Sequence is just a functional version of Iterable. 
