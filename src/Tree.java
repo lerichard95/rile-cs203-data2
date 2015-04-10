@@ -368,19 +368,20 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
         //  this and u are subsets of each other.
         return this.isSubset(u) && u.isSubset(this);
     }
-
+/*
     public boolean amIAVLBalanced() {
         int min = Math.min(this.left.height, this.right.height);
         int max = Math.max(this.left.height, this.right.height);
         return (min <= max) && (max <= min);
     }
+    */
 
     /**
      * Perform a right rotation on this tree branch
      *
      * @return a new FiniteBag, rotated right
      */
-
+    /*
     public FiniteBag<T> rotateRight() {
 
         FiniteBag<T> bottomRight =
@@ -392,6 +393,7 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
 
         return new Tree<T>(this.left.getLeft(), this.left.getKey(), this.left.getCount(), bottomRight);
     }
+    */
 
 
     /**
@@ -399,11 +401,13 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
      *
      * @return a new FiniteBag, rotated left
      */
+    /*
     public FiniteBag<T> rotateLeft() {
         FiniteBag<T> newLeft =
                 new Tree<T>(this.left, this.key, this.count, this.right.getLeft());
         return new Tree<T>(newLeft, this.right.getKey(), this.right.getCount(), this.right.getRight());
     }
+    */
 
     /**
      * Get the left-

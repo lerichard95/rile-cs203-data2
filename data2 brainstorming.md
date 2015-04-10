@@ -193,13 +193,13 @@ These two pieces of the project will be weighted equally.
 
 #Submission Checklist
 
-[ ] Source code /src
-[ ] Console transcript
+[x] Source code /src
+[x] Console transcript
 
-[ ] Essay
+[x] Essay
   - explain approach to implementing and verifying the system
   - 
-[ ] API/library manual
+[x] API/library manual
   - Document the API's functions
   - Describe the uses
   - Explain properties
