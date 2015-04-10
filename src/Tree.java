@@ -8,10 +8,10 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
     /**
      * Tree state variables are private as to not expose rep
      */
-    private FiniteBag<T> left;
-    private T key;
-    private int count;
-    private FiniteBag<T> right;
+    FiniteBag<T> left;
+    T key;
+    int count;
+    FiniteBag<T> right;
 
 
     /**
@@ -373,6 +373,39 @@ public class Tree<T extends Comparable<T>> implements FiniteBag<T>, Sequence<T> 
         //  this and u are subsets of each other.
         return this.isSubset(u) && u.isSubset(this);
     }
+
+/*
+    */
+/**
+ * Perform a right rotation on this tree branch
+ *
+ * @return a new FiniteBag, rotated right
+ *//*
+
+    public FiniteBag<T> rotateRight() {
+        FiniteBag<T> bottomRight =
+                new Tree<T>(this.left.right, this.key, this.count, this.right);
+        // TODO: What if the right node is a Leaf?
+        if (this.right.equals(new Leaf<T>())) {
+            bottomRight = new Leaf<T>();
+        }
+
+        return new Tree<T>(this.left.left, this.left.key, this.left.count, bottomRight);
+    }
+
+    */
+/**
+ * Perform a left rotation on this tree branch
+ *
+ * @return a new FiniteBag, rotated left
+ *//*
+
+    public FiniteBag<T> rotateLeft() {
+        FiniteBag<T> newLeft =
+                new Tree<T>(this.left, this.key, this.count, this.right.left);
+        return new Tree<T>(newLeft, this.right.key, this.right.count, this.right.right);
+    }
+*/
 
 
 }

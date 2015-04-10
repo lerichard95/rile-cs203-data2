@@ -5,6 +5,7 @@
  */
 public class Leaf<T extends Comparable<T>> implements FiniteBag<T> {
 
+
     /* Iteration abstraction functions */
 
     /**

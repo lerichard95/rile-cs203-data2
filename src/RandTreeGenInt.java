@@ -21,17 +21,7 @@ public class RandTreeGenInt {
      * @return a FiniteBag representing a Finite Set
      */
     public static FiniteBag<Integer> randTree(int num, int range) {
-        tree = new Leaf<Integer>();
-
-        for (int i = 0; i < num; i++) {
-            Integer randKey = rand.nextInt(range);
-            // Ensure that the randomly generated key wasn't already in the tree
-            if (tree.member(randKey)) {
-                randKey = rand.nextInt(range);
-            }
-            tree = tree.add(randKey);
-        }
-        return tree;
+        return randTreeN(num, range, 1);
     }
 
     /**
@@ -54,7 +44,7 @@ public class RandTreeGenInt {
      *
      * @param start lower bound of element #
      * @param end   upper bound of element #
-     * @param n multiplicity of all items in set
+     * @param n     multiplicity of all items in set
      * @return FiniteBag
      */
     public static FiniteBag<Integer> exhaustTreeN(int start, int end, int n) {
@@ -65,4 +55,17 @@ public class RandTreeGenInt {
         return tree;
     }
 
+    public static FiniteBag<Integer> randTreeN(int num, int range, int count) {
+        tree = new Leaf<Integer>();
+
+        for (int i = 0; i < num; i++) {
+            Integer randKey = rand.nextInt(range);
+            // Ensure that the randomly generated key wasn't already in the tree
+            if (tree.member(randKey)) {
+                randKey = rand.nextInt(range);
+            }
+            tree = tree.addN(randKey, count);
+        }
+        return tree;
+    }
 }

@@ -66,10 +66,27 @@ public class FiniteBagExamples {
         // union()
         // Union of empty set and non-empty set
         t.checkExpect(leaf.union(randExhaust1), randExhaust1, "leaf.union(randExhaust1)");
+
+        // union()
+        System.out.println("Should print Tree representing 1-10");
         FiniteBag<Integer> exhaustBagN = RandTreeGenInt.exhaustTreeN(0, randInt1, randInt1);
 
+        // Generate three bounds
+        int randInt2 = rand.nextInt(8);
+        int randLowBound = rand.nextInt(randInt2);
+        int randMidBound = randLowBound + rand.nextInt(randInt2);
+        int randUpBound = randMidBound + rand.nextInt(randInt2);
 
+        FiniteBag<Integer> exhaustTreeN1 = RandTreeGenInt.exhaustTreeN(randLowBound, randMidBound, 0);
+        FiniteBag<Integer> exhaustTreeN2 = RandTreeGenInt.exhaustTreeN(randMidBound + 1, randUpBound, 0);
+        FiniteBag<Integer> exhaustTreeN3 = RandTreeGenInt.exhaustTreeN(randLowBound, randUpBound, 0);
+        FiniteBag<Integer> unionTree1 = exhaustTreeN1.union(exhaustTreeN2);
 
+        t.checkExpect(unionTree1.isEqual(exhaustTreeN3), true, "union() for exhaust tree");
+
+        t.checkExpect(leaf.union(leaf), leaf, "union() leaf with leaf");
+
+        t.checkExpect(finiteBagEquality(), true, "finiteBagEquality()");
     }
 
 
@@ -84,9 +101,11 @@ public class FiniteBagExamples {
 
     }
 
-    public void testTreeInt(Tester t) {
-        RandTreeGenInt treeGeneratorIntegers = new RandTreeGenInt();
-
+    public boolean finiteBagEquality() {
+        int randInty = rand.nextInt();
+        FiniteBag<Integer> a = RandTreeGenInt.randTreeN(0, 100, randInty);
+        FiniteBag<Integer> b = a;
+        return (a.isSubset(b) && b.isSubset(a));
     }
 
 

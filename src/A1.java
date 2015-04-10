@@ -5,25 +5,6 @@ public class A1 {
     public static void main(String[] args) {
 
 
-
-        System.out.println("----- TEST: union (2); 2 identical sets -----");
-        System.out.println("Should print Tree representing 1-10");
-        FiniteSet exhaustTree3 = treeGen.exhaustTree(1, 10);
-        FiniteSet exhaustTree33 = treeGen.exhaustTree(1, 10);
-        System.out.println(exhaustTree3.union(exhaustTree33));
-
-        System.out.println("----- TEST: union (3); 2 empty sets -----");
-        System.out.println("Should print Leaf()");
-        testLeaf = testLeaf.empty();
-        System.out.println(testLeaf2.union(testLeaf));
-
-        System.out
-                .println("----- TEST: union (4); 2 non-identical sets -----");
-        System.out.println("Should print Tree representing 1-15");
-        FiniteSet exhaustTree4 = treeGen.exhaustTree(1, 10);
-        FiniteSet exhaustTree44 = treeGen.exhaustTree(11, 15);
-        System.out.println(exhaustTree4.union(exhaustTree44));
-
         System.out
                 .println("----- TEST: inter (1); set 1-10 with 5-10  -----");
         FiniteSet exhaustTree5 = treeGen.exhaustTree(5, 10);

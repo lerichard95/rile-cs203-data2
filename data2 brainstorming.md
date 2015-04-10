@@ -96,11 +96,19 @@ Leaf
 === 
 
 ##AVL TREES
+Tree rotation research 
+http://en.wikipedia.org/wiki/Tree_rotation
+
 [ ] Add a height field
 [ ] Decide when the left or right rotation should occur
 [ ] Write the left rotation
 [ ] Write the right rotation
 [ ] Implement AVL trees for Tree class
+
+Getter methods for left, right, count, key, height
+Are these needed for rotations?
+[ ] Tree
+[ ] Leaf
 
 
 ##Testing
